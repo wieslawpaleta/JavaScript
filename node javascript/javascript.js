@@ -1,5 +1,5 @@
-// JavaScript, Where To, Introduction, Where To, Output, Syntax, Statements  (tu jestem teraz)
-
+// JavaScript, Where To, Introduction, Where To, Output, Syntax, Statements, Comments, Variables  (tu jestem teraz)
+/* */
 
 let x = 5;
 let y = 6;
@@ -26,3 +26,9 @@ k = 2;
 j = l + k;
 console.log(j)
 
+//function myFunction() {
+//   document.getElementById("demo1").innerHTML = "Hello Dolly!";
+//   document.getElementById("demo2").innerHTML = "How are you?";
+// }
+
+// console.log(myFunction())
