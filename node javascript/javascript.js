@@ -1,5 +1,5 @@
 // JavaScript, Where To, Introduction, Where To, Output, Syntax, Statements, Comments, Variables, Let, Const, Datatypes, Operators, Arithmetic, Assignment 
-// Operators/Comparison (tu jestem teraz)
+// Operators/Comparison, Operators/Conditionals (tu jestem teraz)
 /* */
 
 // let x = 5;
@@ -323,9 +323,51 @@
 // x ??= 10;
 // console.log(x)
 
-let text = "12345";
+// let text = "12345";
 
-let min = Math.min(...text);
-let max = Math.max(...text);
-console.log(min);
-console.log(max);
+// let min = Math.min(...text);
+// let max = Math.max(...text);
+// console.log(min);
+// console.log(max);
+
+
+// let x = 5;
+// console.log(x == 8)
+// console.log(x == 5)
+// console.log(x == "5")
+// console.log(x === 5)
+// console.log(x === "5")
+// console.log(x != 8)
+// console.log(x !== 5)
+// console.log(x !== "5")
+// console.log(x !== 8)
+// console.log(x > 8)
+// console.log(x < 8)
+// console.log(x >= 8)
+// console.log(x <= 8)
+
+// let text1 = "A";
+// let text2 = "B"
+// let résultat = text1 < text2;
+// console.log(résultat)
+
+// let text1 = "20";
+// let text2 = "5";
+// let résultat = text1 < text2;
+// console.log(résultat)
+
+// console.log(2 < 12)
+// console.log(2 < "12")
+// console.log(2 < "John")
+// console.log(2 > "John")
+// console.log(2 == "John")
+// console.log("2" < "12")
+// console.log("2" > "12")
+// console.log("2" == "12")
+
+// age = Number(age);
+// if (isNaN(age)) {
+//     peutvoter = "Input n'est pas un nombre";
+// } else {
+//     peutvoter = (age < 18) ? "Trop jeune" : "Assez âgé";
+// }
