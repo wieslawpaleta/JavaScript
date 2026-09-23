@@ -1,5 +1,5 @@
 // JavaScript, Where To, Introduction, Where To, Output, Syntax, Statements, Comments, Variables, Let, Const, Datatypes, Operators, Arithmetic, Assignment 
-// Operators/Comparison, Operators/Conditionals (tu jestem teraz)
+// Operators/Comparison, Operators/Conditionals, // If/If else (tu jestem teraz)
 /* */
 
 // let x = 5;
@@ -371,3 +371,41 @@
 // } else {
 //     peutvoter = (age < 18) ? "Trop jeune" : "Assez âgé";
 // }
+
+// heure = 15
+
+// if (heure < 18) {
+//     salutation = "Bonjour";
+// }
+// console.log(salutation)
+
+// let age = 16;
+// let text = "Tu ne peux pas conduire";
+
+// if (age >= 18) {
+//     text = "Tu peux conduire";
+// }
+// console.log(text)
+
+// let age = 16;
+// let pays = "USA";
+// let text = "Tu ne peux pas conduire!";
+
+// if (pays == "USA") {
+//     if (age >= 16) {
+//         text = "Tu peux conduire!";
+//     }
+// }
+// console.log(text)
+
+// let age = 16;
+// let pays = "USA";
+// let text = "Te ne peux pas conduire!";
+
+// if (pays == "USA" && age >= 16) {
+//     text = "Tu peux conduire!";
+// }
+// console.log(text)
+
+
+// If/If else
