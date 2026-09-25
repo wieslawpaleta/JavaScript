@@ -409,3 +409,56 @@
 
 
 // If/If else
+    // if (heure < 10) {
+    //     salutation = "Bonjour";
+    // } else if (heure < 20) {
+    //     salutation = "Bonjour";
+    // } else {
+    //     salutation = "Bonsoir";
+    // }
+
+    // let texte;
+    // if (Math.random() < 0.5) {
+    //     texte = "<a href='https://youtu.be/6YsBh-ZQbFg?si=FeW4oFmBYMJO2Q6Z'"
+    // } else {
+    //     texte = "<a href='https://www.youtube.com/watch?v=MEFfhzDYtfk'"
+    // }
+    // console.log(texte)
+
+
+//If/Ternary Operator
+    // let age = 15;
+    // let texte = (age < 18) ? "Minor" : "Adult";
+
+    // console.log(texte)
+
+    // let estMember = true;
+    // let rabais = estMember ? 0.2 : 0;
+
+    // let estMember = false;
+    // let rabais = estMember ? 0.2 : 0;
+
+    // console.log(rabais)
+
+
+//Switch/Switch Statement
+    switch (new Date().getDay()) {
+        case 0:
+            jour = "Dimanche";
+            break;
+        case 1:
+            jour = "Lundi";
+            break;
+        case 2:
+            jour = "Mardi";
+            break;
+        case 3:
+            jour = "Mercredi";
+            break;
+        case 4:
+            jour = "Jeudi";
+        case 5:
+            jour = "Vendredi";
+        case 6:
+            jour = "Samedi";
+    }
