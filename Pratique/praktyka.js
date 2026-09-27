@@ -479,3 +479,36 @@
     // }
 
     // console.log(texte)
+
+    // let texte;
+    // switch (new Date().getDay()) {
+    //     case 4:
+    //     case 5:
+    //         texte = "C'est bientôt le week-end !";
+    //         break;
+    //     case 0:
+    //     case 6:
+    //         texte = "C'est le week-end !";
+    //         break;
+    //     default:
+    //         texte = "J'ai hâte d'être au week-end"
+    // }
+
+    //     console.log(texte)
+
+    // let x = "0";
+    // switch (x) {
+    //     case 0:
+    //         texte = "Arrêt";
+    //         break;
+    //     case 1:
+    //         texte ="Allumé";
+    //         break;
+    //     default:
+    //         texte = "Aucune valeur trouvée";
+    // } 
+
+    // console.log(texte)
+
+
+//Boolean/Booleans
