@@ -1,5 +1,5 @@
 // JavaScript, Where To, Introduction, Where To, Output, Syntax, Statements, Comments, Variables, Let, Const, Datatypes, Operators, Arithmetic, Assignment 
-// Operators/Comparison, Operators/Conditionals, // If/If else (tu jestem teraz)
+// Operators/Comparison, Operators/Conditionals, // If/If else, //If Conditions/Logical Operators (tu jestem teraz)
 /* */
 
 // let x = 5;
@@ -512,3 +512,35 @@
 
 
 //Boolean/Booleans
+// let x = 5;
+
+// console.log(x == 8)
+// console.log(x != 8)
+
+// let heur = 5;
+// if (heur < 18) {
+//     salutation = "Bonjour";    
+// } else {
+//     salutation = "Bonsoir";
+// }
+
+// console.log(salutation)
+
+// let texte = "";
+// let i = 1;
+// while (i < 10) {
+//     texte += i;
+//     i++
+// }
+
+// console.log(texte)
+
+// console.log(Boolean(10 > 9))
+// console.log(Boolean(10 < 9))
+// console.log(10 == 9)
+
+// let y = new Boolean(false);
+// console.log(y)
+
+
+//If Conditions/Logical Operators

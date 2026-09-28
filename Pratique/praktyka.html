@@ -11,17 +11,21 @@ Images, Image Maps, Background Images, <picture> Element, Images Exercises, Imag
 Favicon Exercises, Page Title, Title Exercises, Tables, Table Borders, Table Padding & Spacing,
  Tables/Table Styling, Table Colgroup,  Tables Exercises, Tables Code Challenge, Lists, Lists/Unordered Lists,
  Lists/Ordered Lists, Lists/Other Lists, Lists/Lists Exercises, Lists/Lists Code Challenge, Block & Inline/Block and Inline Elements
- Id/ id exercises, Id/Id Code Challenge, Buttons/Buttons, Iframes/Iframes,     (tu teraz jestem)
+ Id/ id exercises, Id/Id Code Challenge, Buttons/Buttons, Iframes/Iframes, Iframes/Iframes Exercises, Iframes/Iframes Code Challenge,
+JavaScript/JavaScript, JavaScript/Scripts Exercises, JavaScript/JavaScript Code Challenge 
+      (tu teraz jestem)
 -->
 
 <!--JavaScript W3Schools:
 // JavaScript, Where To, Introduction, Where To, Output, Syntax, Statements, Comments, Variables, Let, Const, Datatypes, Operators, Arithmetic, Assignment 
-// Operators/Comparison, Operators/Conditionals, // If/If else,  //Conditions/Switch Statement, //Boolean/Booleans (tu jestem teraz)
+// Operators/Comparison, Operators/Conditionals, // If/If else,  //Conditions/Switch Statement, //Boolean/Booleans, //If Conditions/Logical Operators (tu jestem teraz)
 -->
 
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
 <p id="demo1"></p>
@@ -32,18 +36,37 @@ Favicon Exercises, Page Title, Title Exercises, Tables, Table Borders, Table Pad
   <img src="../Html-css-javascript/maupa.jpeg">
 </picture>
 
-
+<i class="glyphicon glyphicon-cloud"></i>
+<i class="glyphicon glyphicon-remove"></i>
+<i class="glyphicon glyphicon-user"></i>
+<i class="glyphicon glyphicon-envelope"></i>
+<i class="glyphicon glyphicon-thumbs-up"></i>
 
 
 <iframe src="praktyka.html" height="200" width="300" title="Iframe Example"></iframe>
+<p><a href="https://www.thewitcher.com/gr/pl/witcher3" target="iframe_a">Wiedźmak 3</a></p>
+
+<button type="button" onclick="document.getElementById('demo3').innerHTML = Date()">Naciśnij przycisk i poznaj czas!</button>
+
+<i class="material-icons">cloud</i>
+<i class="material-icons">favorite</i>
+<i class="material-icons">attachment</i>
+<i class="material-icons">computer</i>
+<i class="material-icons">traffic</i>
+
+<p id="demo3"></p>
 
 <script>
+
 function myFunction() {
   document.getElementById("demo1").innerHTML = "Bonjour Pierre!";
   document.getElementById("demo2").innerHTML = "Comment ça va??";
 }
 
+document.getElementById("demo1").style.fontSize = "35px";
+
 console.log(myFunction());
 </script>
+<noscript>Proszę wybaczyć, ale ta przeglądarka nie obsługuje JavaScript!</noscript>
 </body>
 </html>
