@@ -13,7 +13,7 @@ Favicon Exercises, Page Title, Title Exercises, Tables, Table Borders, Table Pad
  Lists/Ordered Lists, Lists/Other Lists, Lists/Lists Exercises, Lists/Lists Code Challenge, Block & Inline/Block and Inline Elements
  Id/ id exercises, Id/Id Code Challenge, Buttons/Buttons, Iframes/Iframes, Iframes/Iframes Exercises, Iframes/Iframes Code Challenge,
 JavaScript/JavaScript, JavaScript/Scripts Exercises, JavaScript/JavaScript Code Challenge, File Paths/File Paths,
-File Paths/File Paths Code Challenge, Head/Head, Head/Head Exercises
+File Paths/File Paths Code Challenge, Head/Head, Head/Head Exercises, Layout/Layout,
       (tu teraz jestem)
 -->
 
@@ -27,6 +27,31 @@ File Paths/File Paths Code Challenge, Head/Head, Head/Head Exercises
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+table, th, td {
+  border: 1px solid green;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 15px;
+ 
+}
+th, td {
+  padding: 10px;
+  width: 50%;
+  height: 70px;
+  text-align: center;
+  vertical-align: bottom;
+  background-color: yellow;
+  color: green
+}
+tr:hover {
+  background-color: coral;
+  }
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+  }
+</style>
 </head>
 <body>
 <p id="demo1"></p>
@@ -56,6 +81,19 @@ File Paths/File Paths Code Challenge, Head/Head, Head/Head Exercises
 <i class="material-icons">traffic</i>
 
 <p id="demo3"></p>
+
+
+    <table>
+        <tr>
+            <td>Domino</td>
+            <td>Jachaś</td>
+        </tr>
+        <tr>
+            <td>Chorąży</td>
+            <td>Torpeda</td>
+        </tr>
+    </table>
+
 
 <script>
 

@@ -574,9 +574,40 @@
 //     texte += voitures[i] + "\n";
 // }
 // console.log(texte)
-let texte = "";
+// let texte = "";
 
-for (let i = 0; i < 5; i++) {
-    texte += "Le nombre est " + i + "\n";
-}
-console.log(texte)
+// for (let i = 0; i < 5; i++) {
+//     texte += "Le nombre est " + i + "\n";
+// }
+// console.log(texte)
+
+// let i = 5;
+
+// for (i = 0; i < 10; i++) {
+//     console.log(i)
+// }
+
+// for (let i = 0; i < 10; i++) {
+//     console.log(i)
+// }
+
+// let i = 0;
+// let texte = "";
+// while (i < 10) {
+//     texte += "Le nombre est " + i;
+//     i++;
+// }
+// console.log(texte)
+
+// let i = 11;
+// let texte = "";
+// do {
+//     texte += "Le nombre est " + i;
+//     i++;
+// }
+
+// while (i < 10);
+// console.log(texte)
+
+
+//Loops/loop for
