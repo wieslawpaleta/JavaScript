@@ -13,7 +13,8 @@ Favicon Exercises, Page Title, Title Exercises, Tables, Table Borders, Table Pad
  Lists/Ordered Lists, Lists/Other Lists, Lists/Lists Exercises, Lists/Lists Code Challenge, Block & Inline/Block and Inline Elements
  Id/ id exercises, Id/Id Code Challenge, Buttons/Buttons, Iframes/Iframes, Iframes/Iframes Exercises, Iframes/Iframes Code Challenge,
 JavaScript/JavaScript, JavaScript/Scripts Exercises, JavaScript/JavaScript Code Challenge, File Paths/File Paths,
-File Paths/File Paths Code Challenge, Head/Head, Head/Head Exercises, Layout/Layout,
+File Paths/File Paths Code Challenge, Head/Head, Head/Head Exercises, Layout/Layout, Layout/Layout Code Challenge, Responsive/Responsive,
+
       (tu teraz jestem)
 -->
 
@@ -37,7 +38,7 @@ table {
  
 }
 th, td {
-  padding: 10px;
+  padding: 50px;
   width: 50%;
   height: 70px;
   text-align: center;
@@ -51,16 +52,16 @@ tr:hover {
 tr:nth-child(even) {
   background-color: #f2f2f2;
   }
+
+div.tablecontainer {
+  overflow-x: auto;
+}
 </style>
 </head>
 <body>
 <p id="demo1"></p>
 <p id="demo2"></p>
-<picture>
-  <source media="(min-width: 650px)" srcset="../Html-css-javascript/pies.png">
-  <source media="(min-width: 465px)" srcset="../Html-css-javascript/kuń.png">
-  <img src="../Html-css-javascript/maupa.jpeg">
-</picture>
+
 
 <i class="glyphicon glyphicon-cloud"></i>
 <i class="glyphicon glyphicon-remove"></i>
@@ -82,17 +83,22 @@ tr:nth-child(even) {
 
 <p id="demo3"></p>
 
-
+<div class="tablecontainer">
     <table>
         <tr>
             <td>Domino</td>
             <td>Jachaś</td>
+            <td>Galak</td>
+            <td>Pizza</td>
         </tr>
         <tr>
             <td>Chorąży</td>
             <td>Torpeda</td>
+            <td>Gwiezdna</td>
+            <td>Flota</td>
         </tr>
     </table>
+</div>
 
 
 <script>
@@ -109,3 +115,10 @@ console.log(myFunction());
 <noscript>Proszę wybaczyć, ale ta przeglądarka nie obsługuje JavaScript!</noscript>
 </body>
 </html>
+
+
+<picture>
+  <source media="(min-width: 650px)" srcset="../HTML-CSS-JS/Praktyka/Projekt1/Obrazki/pies.png">
+  <source media="(min-width: 465px)" srcset="../HTML-CSS-JS/Praktyka/Projekt1/Obrazki/kuń.png">
+  <img src="../HTML-CSS-JS/Praktyka/Projekt1/Obrazki/maupa.jpeg">
+</picture>

@@ -611,3 +611,39 @@
 
 
 //Loops/loop for
+// let texte = "";
+// for (let i = 0; i < 5; i++) {
+//     texte += "Le nombre est " + i + "\n";
+// } 
+// console.log(texte)
+
+// const voiture = ["BMW", "Volvo", "Saab", "Ford"];
+// let len = voiture.length;
+
+// let texte = "";
+// for (let i = 0; i < len; i++) {
+//     texte += voiture[i] + "\n";
+// }
+// console.log(texte)
+
+// const voiture = ["BMW", "Volvo", "Saab", "Ford"];
+// let len = voiture.length;
+
+// let i = 0;
+
+// let texte = "";
+// for (; i < len; ) {
+//     texte += voiture[i] + "\n";
+//     i++;
+
+// }
+// console.log(texte)
+
+//Loops/Loop While
+let texte = "";
+let i = 0;
+while (i < 10) {
+    texte += "Le nombre est " + i + "\n";
+    i++;
+}
+console.log(texte)
