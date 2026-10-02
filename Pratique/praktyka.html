@@ -29,6 +29,26 @@ File Paths/File Paths Code Challenge, Head/Head, Head/Head Exercises, Layout/Lay
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style>
+
+p {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+}
+
+span {
+  background-color: red;
+  color: white;
+  padding: 10px;
+}
+
+p.ex1 {display: none;}
+p.ex2 {display: inline;}
+p.ex3 {display: block;}
+p.ex4 {display: inline-block;}
+p.ex5 {display: flex;}
+p.ex6 {display: grid;}
+
 table, th, td {
   border: 1px solid green;
 }
@@ -99,7 +119,53 @@ div.tablecontainer {
         </tr>
     </table>
 </div>
+<picture>
+  <source media="(min-width: 650px)" srcset="../HTML-CSS-JS/Praktyka/Projekt1/Obrazki/pies.png">
+  <source media="(min-width: 465px)" srcset="../HTML-CSS-JS/Praktyka/Projekt1/Obrazki/kuń.png">
+  <img src="../HTML-CSS-JS/Praktyka/Projekt1/Obrazki/maupa.jpeg" alt="Tekst alternatywny jest kluczowy w wyświetlaniu">
+</picture>
 
+<h2>Przykłady wyświetlania: none:</h2>
+<p class="ex1">
+  <span>Tekst 1</span>
+  <span>Tekst 2</span>
+  <span>Tekst 3</span>
+</p>
+
+<h2>Przykłady wyświetlania: inline:</h2>
+<p class="ex2">
+  <span>Tekst 1</span>
+  <span>Tekst 2</span>
+  <span>Tekst 3</span>
+</p>
+
+<h2>Przykłady wyświetlania: block:</h2>
+<p class="ex3">
+  <span>Tekst 1</span>
+  <span>Tekst 2</span>
+  <span>Tekst 3</span>
+</p>
+
+<h2>Przykłady wyświetlania: inline-block:</h2>
+<p class="ex4">
+  <span>Tekst 1</span>
+  <span>Tekst 2</span>
+  <span>Tekst 3</span>
+</p>
+
+<h2>Przykłady wyświetlania: flex:</h2>
+<p class="ex5">
+  <span>Tekst 1</span>
+  <span>Tekst 2</span>
+  <span>Tekst 3</span>
+</p>
+
+<h2>Przykłady wyświetlania: grid:</h2>
+<p class="ex6">
+  <span>Tekst 1</span>
+  <span>Tekst 2</span>
+  <span>Tekst 3</span>
+</p>
 
 <script>
 
@@ -117,8 +183,3 @@ console.log(myFunction());
 </html>
 
 
-<picture>
-  <source media="(min-width: 650px)" srcset="../HTML-CSS-JS/Praktyka/Projekt1/Obrazki/pies.png">
-  <source media="(min-width: 465px)" srcset="../HTML-CSS-JS/Praktyka/Projekt1/Obrazki/kuń.png">
-  <img src="../HTML-CSS-JS/Praktyka/Projekt1/Obrazki/maupa.jpeg">
-</picture>

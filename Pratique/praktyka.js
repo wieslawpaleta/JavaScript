@@ -640,10 +640,67 @@
 // console.log(texte)
 
 //Loops/Loop While
-let texte = "";
-let i = 0;
-while (i < 10) {
-    texte += "Le nombre est " + i + "\n";
-    i++;
+// let texte = "";
+// let i = 0;
+// while (i < 10) {
+//     texte += "Le nombre est " + i + "\n";
+//     i++;
+// }
+// console.log(texte)
+
+// let texte = "";
+// let i = 0;
+// do {
+//     texte += "Le nombre est  " + i + "\n";
+//     i++;
+// }
+// while (i < 10);
+// console.log(texte)
+
+// const lesVoiture = ["BMW", "Volvo", "Saab", "Ford"];
+// let i = 0;
+// let leTexte = "";
+
+// for (;lesVoiture[i];) {
+//     leTexte += lesVoiture[i] + "\n";
+//     i++;
+// }
+// console.log(leTexte)
+
+// const lesVoiture = ["BMW", "Volvo", "Saab", "Ford"];
+// let i = 0;
+// let leTexte = "";
+
+// while (lesVoiture[i]) {
+//     leTexte += lesVoiture[i] + "\n";
+//     i++;
+// }
+// console.log(leTexte)
+
+
+//Loops/Break
+// let leTexte = "";
+// for (let i = 0; i < 10; i++) {
+//     if (i === 3) { break; } 
+//     leTexte += "Le nombre est " + i + "\n";
+// }
+// console.log(leTexte)
+
+
+switch (new Date().getDay()) {
+    case 0:
+        leJour = "Dimanche";
+    case 1:
+        leJour = "Lundi";
+    case 2:
+        leJour = "Mardi";
+    case 3:
+        leJour = "Mercredi";
+    case 4:
+        leJour = "Jeudi";
+    case 5:
+        leJour = "Vendredi";
+    case 6:
+        leJour = "Samedi";    
 }
-console.log(texte)
+console.log(leJour)
