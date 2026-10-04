@@ -14,6 +14,8 @@ Favicon Exercises, Page Title, Title Exercises, Tables, Table Borders, Table Pad
  Id/ id exercises, Id/Id Code Challenge, Buttons/Buttons, Iframes/Iframes, Iframes/Iframes Exercises, Iframes/Iframes Code Challenge,
 JavaScript/JavaScript, JavaScript/Scripts Exercises, JavaScript/JavaScript Code Challenge, File Paths/File Paths,
 File Paths/File Paths Code Challenge, Head/Head, Head/Head Exercises, Layout/Layout, Layout/Layout Code Challenge, Responsive/Responsive,
+Responsive/Responsive Exercises, Responsive/Responsive Code Challenge, Computercode/Computercode, ComputerCode/Exercises
+Computercode/Computer Code Challenge
 
       (tu teraz jestem)
 -->
@@ -75,6 +77,33 @@ tr:nth-child(even) {
 
 div.tablecontainer {
   overflow-x: auto;
+}
+
+.lewy {
+  background-color: yellowgreen;
+  padding: 20px;
+  float: left;
+  width: 20%;
+}
+
+.główny {
+  background-color: antiquewhite;
+  padding: 20px;
+  float: left;
+  width: 60%;
+}
+
+.prawy {
+  background-color: violet;
+  padding: 20px;
+  float: left;
+  width: 20%;
+}
+
+@media screen and (max-width: 800px) {
+  .lewy, .główny, .prawy {
+    width: 100%;
+  }
 }
 </style>
 </head>
@@ -167,7 +196,23 @@ div.tablecontainer {
   <span>Tekst 3</span>
 </p>
 
+<h1 style="font-size:10vw">Cześć świat</h1>
+
+<div class="lewy">
+  <p>Lewy spis</p>
+</div>
+
+<div class="główny">
+  <p>Główna treść</p>
+</div>
+
+<div class="prawy">
+  <p>Prawa treść</p>
+</div>
+
 <script>
+
+
 
 function myFunction() {
   document.getElementById("demo1").innerHTML = "Bonjour Pierre!";

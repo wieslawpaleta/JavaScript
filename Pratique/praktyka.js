@@ -667,7 +667,7 @@
 // }
 // console.log(leTexte)
 
-// const lesVoiture = ["BMW", "Volvo", "Saab", "Ford"];
+// const lesVoitures = ["BMW", "Volvo", "Saab", "Ford"];
 // let i = 0;
 // let leTexte = "";
 
@@ -687,20 +687,98 @@
 // console.log(leTexte)
 
 
-switch (new Date().getDay()) {
-    case 0:
-        leJour = "Dimanche";
-    case 1:
-        leJour = "Lundi";
-    case 2:
-        leJour = "Mardi";
-    case 3:
-        leJour = "Mercredi";
-    case 4:
-        leJour = "Jeudi";
-    case 5:
-        leJour = "Vendredi";
-    case 6:
-        leJour = "Samedi";    
-}
-console.log(leJour)
+// switch (new Date().getDay()) {
+//     case 0:
+//         leJour = "Dimanche";
+//     case 1:
+//         leJour = "Lundi";
+//     case 2:
+//         leJour = "Mardi";
+//     case 3:
+//         leJour = "Mercredi";
+//     case 4:
+//         leJour = "Jeudi";
+//     case 5:
+//         leJour = "Vendredi";
+//     case 6:
+//         leJour = "Samedi";    
+// }
+// console.log(leJour)
+
+// let  leTexte = "";
+
+// laBoucle1: for (let j = 1; j < 5; j++) {
+//     laBoucle2: for (let i = 1; i < 5; i++) {
+//         if (i === 3) { break laBoucle1; }
+//         leTexte += i + "\n";
+//     }
+// }
+// console.log(leTexte)
+
+// let leTexte = "";
+
+// const lesVoitures = ["BMW", "Volvo" ,"Saab", "Ford"];
+// laListe: {
+//     leTexte += lesVoitures[0] + "\n";
+//     leTexte += lesVoitures[1] + "\n";
+//     break laListe
+//     leTexte += lesVoitures[2] + "\n";
+//     leTexte += lesVoitures[3] + "\n";
+
+// }
+// console.log(leTexte)
+
+
+//Les Boucles/Continue
+// let leTexte = "";
+
+// for (let i = 1; i < 10; i++) {
+//     if (i === 3) { continue; }
+//     leTexte += "Le nombre est " + i + "\n";
+// }
+// console.log(leTexte)
+
+// let leTexte = "";
+
+// laBoucle1: for (let j = 1; j < 5; j++) {
+//     laBoucle2: for (let i = 1; i < 5; i++) {
+//         if (i === 3) { continue laBoucle1; }
+//         leTexte += i + "\n";
+//     }
+//     } console.log(leTexte)
+
+// let leTexte = "";
+
+// laBoucle1: for (let j = 1; j < 5; j++) {
+//     laBoucle2: for (let i = 1; i < 5; i++) {
+//         if (i === 3) { continue laBoucle2; }
+//         leTexte += i + "\n";
+//     }
+//     } console.log(leTexte)
+
+
+//Loops/Control Flow
+// let x = 5;
+// let y = 6;
+// let z = x + y;
+
+// console.log(z)
+
+// let unâge = 15;
+// let leTexte = "Inconnu";
+
+// if (unâge >= 18) {
+//     leTexte = "Adulte";
+// } else {
+//     leTexte = "Mineur";
+// }
+
+// console.log(leTexte)
+
+// leTexte = "";
+
+// for (let i = 0; i < 5; i++) {
+//     leTexte += "Le nombre est " + i + "\n";
+// }
+// console.log(leTexte)
+
