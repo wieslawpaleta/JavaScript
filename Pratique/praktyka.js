@@ -782,3 +782,87 @@
 // }
 // console.log(leTexte)
 
+
+// let leTexte = "";
+// for (let i = 0; i < 10; i++) {
+//     if (i === 3) { break; }
+//     leTexte += "Le nombre est " + i + "\n";
+// }
+// console.log(leTexte)
+
+
+// function myFunction(p1, p2) {
+//     return p1 * p2;
+// }
+
+// console.log(myFunction(5, 4))
+
+
+//Strings/Strings
+// let leTexte = `"He's often called Johny"`;
+// console.log(leTexte)
+
+// let leTexte = 
+// `Le rapide
+// renard brun
+// saute par-dessus
+// le chien paresseux`;
+
+// console.log(leTexte)
+
+// let x = new String("Jean");
+// let y = new String("Jean");
+
+// console.log(x == y)
+// console.log(x === y)
+
+
+//Strings/String Templates
+// let leTexte = `"Bonjour' tout le monde!"`;
+
+// console.log(leTexte)
+
+// let lePrénom = "Shrek";
+// let leNom = "l'Ogre";
+
+// let leTexte = `Coucou ${lePrénom}, ${leNom}!`;
+// console.log(leTexte)
+
+// let lePrix = 10;
+// let VAT = 0.25;
+
+// let leTotal = `Total: ${(lePrix * (1 + VAT)).toFixed(2)}`;
+// console.log(leTotal)
+
+// let unEnTête = "Template Strings";
+// let tags = ["template strings", "javascript", "es6"];
+
+// let html = `<h2>${unEnTête}</h2><ul>`;
+// for (const x of tags) {
+//     html += `<li>${x}</li>`;
+// }
+
+// html += `</ul>`;
+
+// console.log(html)
+
+//Strings//String Methods
+// let text = "Bonjour tout le monde!";
+// let char = text.charAt(0);
+
+// console.log(char)
+
+// let code = text.codePointAt(0);
+
+// console.log(code)
+
+// const nom = "W3Schools";
+// let lettre = nom.at(2);
+
+// console.log(lettre)
+
+// const nom = "W3Schools";
+// // let lettre = nom.at(-5);
+// let lettre = nom.charAt(nom.length-5);
+
+// console.log(lettre)
