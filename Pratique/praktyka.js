@@ -866,3 +866,33 @@
 // let lettre = nom.charAt(nom.length-5);
 
 // console.log(lettre)
+
+// let leTexte = "Salut tous le monde!";
+// // let char = leTexte[0];
+
+// // console.log(0)
+
+// try {
+//     leTexte[0] = "a";
+// } catch(err) {
+//     leTexte = err.message
+// }
+
+// console.log(leTexte)
+
+// "use strict";
+// let leTexte = "Salut tous le monde!";
+
+// try {
+//     leTexte[0] = "a";
+// } catch(err) {
+//     leTexte = err.message
+// }
+
+// console.log(leTexte)
+
+// let leTexte1 = "Salut";
+// let leTexte2 = "tous le monde";
+// let leTexte3 = leTexte1.concat(" ", leTexte2);
+
+// console.log(leTexte3)
