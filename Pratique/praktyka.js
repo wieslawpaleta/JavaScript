@@ -896,3 +896,48 @@
 // let leTexte3 = leTexte1.concat(" ", leTexte2);
 
 // console.log(leTexte3)
+
+// let leTexte = "Pomme, Banana, Kiwi";
+// let laPartie = leTexte.slice(7, 13);
+
+// console.log(laPartie)
+
+// let leTexte = "Pomme, Banana, Kiwi";
+// let laPartie = leTexte.slice(7);
+
+// console.log(laPartie)
+
+// let leTexte = "Pomme, Banana, Kiwi";
+// let laPartie = leTexte.slice(-12);
+
+// console.log(laPartie)
+
+// let leTexte = "Pomme, Banana, Kiwi";
+// let laPartie = leTexte.slice(-12, -6);
+
+// console.log(laPartie)
+
+// let str = "Apple, Banana, Kiwi";
+// let laPartie = str.substring(7, 13); //Cette méthode est obsolète.
+
+// console.log(laPartie)
+
+// let str = "Apple, Banana, Kiwi";
+// let laPartie = str.substr(7); //Cette méthode est obsolète.
+
+// let str = "Apple, Banana, Kiwi";
+// let laPartie = str.substr(-4); //Cette méthode est obsolète.
+
+// console.log(laPartie)
+
+// let leTexte1 = "Salut tout le monde!";
+// let leTexte2 = leTexte1.toUpperCase();
+
+// console.log(leTexte2)
+
+// let leTexte1 = "Salut tout le monde!";
+// let leTexte2 = leTexte1.toLowerCase();
+
+// console.log(leTexte2)
+
+let leTexte = "Hello world!";
