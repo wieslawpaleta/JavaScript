@@ -940,4 +940,41 @@
 
 // console.log(leTexte2)
 
-let leTexte = "Hello world!";
+// let leTexte = "Salut tout le monde";
+// let leRésultat = leTexte.isWellFormed();
+
+// let leTexte = "Salut tout le monde \uD800";
+// let leRésultat = leTexte.isWellFormed();
+
+// console.log(leRésultat)
+
+// let leTexte1 = "       Salut tout le monde!       "
+// let leTexte2 = leTexte1.trim();
+
+// console.log(leTexte2)
+
+// let leTexte1 = "       Salut tout le monde!       "
+// let leTexte2 = leTexte1.trimStart();
+
+// console.log(leTexte2)
+
+// let leTexte1 = "       Salut tout le monde!       "
+// let leTexte2 = leTexte1.trimEnd();
+
+// console.log(leTexte2)
+
+// let leTexte = "5";
+// let padded = leTexte.padStart(4,"0");
+
+// console.log(padded)
+
+// let leTexte = "5";
+// let padded = leTexte.padStart(4,"x");
+
+// console.log(padded)
+
+// let leNombre = 5;
+// let leTexte = leNombre.toString();
+// let padded = leTexte.padStart(4,"0");
+
+// console.log(padded)
