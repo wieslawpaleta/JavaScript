@@ -978,3 +978,62 @@
 // let padded = leTexte.padStart(4,"0");
 
 // console.log(padded)
+
+// let leTexte = "5";
+// let padded = leTexte.padEnd(4, "0");
+
+// console.log(padded)
+
+// let leTexte = "5";
+// let padded = leTexte.padEnd(4, "x");
+
+// console.log(padded)
+
+// let leNombre = 5;
+// let leTexte = leNombre.toString();
+// let padded = leTexte.padEnd(4, "0");
+
+// console.log(padded)
+
+// let leTexte = "Salut tout le monde!"
+// let leRésultat = leTexte.repeat(2);
+
+// console.log(2)
+
+// let leTexte = "S'il vous plaît, visitez Paris !";
+// let leNouveauTexte = leTexte.replace("Paris", "Marseille");
+
+// console.log(leTexte)
+// console.log(leNouveauTexte)
+
+// let leTexte = "S'il vous plaît, visitez Paris et Paris !";
+// let leNouveauTexte = leTexte.replace("Paris", "Marseille");
+
+// console.log(leTexte)
+// console.log(leNouveauTexte)
+
+// let leTexte = "S'il vous plaît, visitez Paris !";
+// let leNouveauTexte = leTexte.replace("PARIS", "Marseille");
+
+// console.log(leTexte)
+// console.log(leNouveauTexte)
+
+// let leTexte = "S'il vous plaît, visitez Paris !";
+// let leNouveauTexte = leTexte.replace(/PARIS/i, "Marseille");
+
+// console.log(leTexte)
+// console.log(leNouveauTexte)
+
+// let leTexte = "S'il vous plaît, visitez Paris et Paris !";
+// let leNouveauTexte = leTexte.replace(/Paris/g, "Marseille");
+
+// console.log(leTexte)
+// console.log(leNouveauTexte)
+
+// let leTexte = "J'aime les chats. Les chats sont très faciles à aimer. Les chats sont très populaires.";
+
+// leTexte = leTexte.replaceAll("Les chats", "Les chiens");
+// leTexte = leTexte.replaceAll("les chats", "les chiens");
+
+// console.log(leTexte)
+
