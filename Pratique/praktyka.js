@@ -1037,3 +1037,69 @@
 
 // console.log(leTexte)
 
+// let leTexte = "J'aime les chats. Les chats sont très faciles à aimer. Les chats sont très populaires.";
+
+// leTexte = leTexte.replaceAll(/Les chats/g, "Les Chiens");
+// leTexte = leTexte.replaceAll(/les chat/g, "les chiens");
+
+// console.log(leTexte)
+
+
+// let leTexte = "Salut renard!";
+// const myArr = leTexte.split("");
+
+// console.log(myArr)
+
+// let leTexte1 = "Le rapide renard brun";
+// const myArr1 = leTexte1.split(" ");
+
+// console.log(myArr1)
+
+// let leTexte2 = "Le rapide renard brun";
+// const myArr2 = leTexte2.split();
+
+// console.log(myArr2)
+
+// let leTexte = "👨‍👩‍👧‍👦";
+// const myArr = leTexte.split("");
+
+// console.log(myArr)
+
+// let leTexte1 = "👨‍👩‍👧‍👦";
+
+// const segmenter = new Intl.Segmenter("en", {granularity:"grapheme"});
+// const myArr1 = Array.from(segmenter.segment(leTexte1)).map(s => s.segment);
+
+// console.log(myArr1)
+
+
+//Strings/String Search
+// let leTexte = "S'il vous plaît, localisez où apparaît le mot 'locate' !";
+// let lIndex = leTexte.indexOf("locate");
+// let lIndex1 = leTexte.lastIndexOf("John");
+// let lIndex2 = leTexte.indexOf("locate", 15);
+// let lIndex3 = leTexte.lastIndexOf("locate");
+// let lIndex4 = leTexte.lastIndexOf("locate", 15);
+
+// console.log(lIndex)
+// console.log(lIndex1)
+// console.log(lIndex2)
+// console.log(lIndex3)
+// console.log(lIndex4)
+
+// let leTexte = "S'il vous plaît, localisez où apparaît le mot 'locate' !";
+// let lIndex = leTexte.search("locate");
+// let lIndex1 = leTexte.search(/locate/);
+
+// console.log(lIndex)
+// console.log(lIndex1)
+
+
+let leTexte = "La pluie en Espagne reste surtout dans la plaine";
+const lIndex = leTexte.match("aine");
+const lIndex1 = leTexte.match(/aine/);
+
+console.log(lIndex)
+console.log(lIndex1)
+
+
