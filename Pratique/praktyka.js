@@ -1095,11 +1095,34 @@
 // console.log(lIndex1)
 
 
-let leTexte = "La pluie en Espagne reste surtout dans la plaine";
-const lIndex = leTexte.match("aine");
-const lIndex1 = leTexte.match(/aine/);
+// let leTexte = "La pluie en Espagne reste surtout dans la plaine";
+// const lIndex = leTexte.match("aine");
+// const lIndex1 = leTexte.match(/aine/);
+// const lIndex2 = leTexte.match(/aine/g);
+// const lIndex3 = leTexte.match(/aine/gi);
 
-console.log(lIndex)
-console.log(lIndex1)
+// console.log(lIndex)
+// console.log(lIndex1)
+// console.log(lIndex2)
+// console.log(lIndex3)
 
+// leTexte = "J'aime les chats. Les chats sont très faciles à aimer. Les chats sont très populaires.";
+// const iterator = leTexte.matchAll("Chats");
+// console.log(iterator)
+// const iterator = leTexte.matchAll(/Chats/g);
+// console.log(iterator)
+// const iterator = leTexte.matchAll(/Chats/gi);
+// console.log(iterator)
+
+// let leTexte = "Bonjour le monde, bienvenue dans l'univers.";
+// console.log(leTexte.includes("monde"))
+// console.log(leTexte.includes("monde", 12))
+
+let leTexte = "Bonjour le monde, bienvenue dans l'univers.";
+console.log(leTexte.startsWith("Bonjour"))
+console.log(leTexte.startsWith("monde"))
+console.log(leTexte.startsWith("monde", 11))
+console.log(leTexte.startsWith("monde", 12))
+
+//String/String Search/endsWith
 
