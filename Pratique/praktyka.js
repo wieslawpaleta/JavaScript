@@ -1136,6 +1136,7 @@ console.log(leTexte.endsWith("monde", 12))
 
 //Strings/String Reference
 //Numbers/Numbers
-
+let x = 123e5;
+console.log(x)
 
 
