@@ -1124,5 +1124,18 @@ console.log(leTexte.startsWith("monde"))
 console.log(leTexte.startsWith("monde", 11))
 console.log(leTexte.startsWith("monde", 12))
 
+
 //String/String Search/endsWith
+let leTexte = "Jean Pierre";
+console.log(leTexte.endsWith("Pierre"))
+
+let leTexte = "Bonjour le monde, bienvenue dans l'univers.";
+console.log(leTexte.endsWith("monde", 11))
+console.log(leTexte.endsWith("monde", 12))
+
+
+//Strings/String Reference
+//Numbers/Numbers
+
+
 
