@@ -1140,5 +1140,32 @@ let x = 123e5;
 console.log(x)
 
 
-//Numbers/Numbers/Floating Precision
+//Numbers/Numbers
+let x = 0.2 + 0.1;
+let y = (0.2 * 10 + 0.1 * 10) / 10
+console.log(x)
+console.log(y)
+
+let v = 4;
+let w = 5;
+let x = "10";
+let y = "20";
+let z = x + y;
+let z1 = w + x;
+let z12 = x + w;
+let z2 = "El resultado es: " + w + v;
+let z3 = v + w + x;
+console.log(z)
+console.log(z1)
+console.log(z2)
+console.log(z12)
+cobsole.log(z3)
+
+let x = "100";
+let y = "200";
+let z = y / x;
+console.log(z)
+
+
+
 
