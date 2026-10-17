@@ -1153,7 +1153,7 @@ let y = "20";
 let z = x + y;
 let z1 = w + x;
 let z12 = x + w;
-let z2 = "El resultado es: " + w + v;
+let z2 = "Le resultat est: " + w + v;
 let z3 = v + w + x;
 console.log(z)
 console.log(z1)
@@ -1164,7 +1164,28 @@ cobsole.log(z3)
 let x = "100";
 let y = "200";
 let z = y / x;
+let z1 = y * x;
+let z2 = y - x;
 console.log(z)
+console.log(z1)
+
+let x = 100 / "Pomme";
+console.log(x)
+console.log(isNaN)
+
+let x = NaN;
+let y = "5";
+let z = x + y;
+console.log(z)
+
+let x = NaN;
+let y = 5;
+let z = x + y;
+console.log(z)
+
+let x = NaN;
+console.log(typeof(x))
+
 
 
 
