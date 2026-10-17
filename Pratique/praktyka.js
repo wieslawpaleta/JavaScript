@@ -1186,6 +1186,22 @@ console.log(z)
 let x = NaN;
 console.log(typeof(x))
 
+let leNombre = 2;
+
+while (leNombre != Infinity) {
+    leNombre = leNombre * leNombre;
+}
+
+let x = 2 / 0;
+console.log(x)
+
+let y = -2 / 0;
+console.log(y)
+console.log(typeof(y))
+
+let z = 0xFF;
+console.log(z)
+
 
 
 
