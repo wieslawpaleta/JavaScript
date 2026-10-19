@@ -1118,91 +1118,149 @@
 // console.log(leTexte.includes("monde"))
 // console.log(leTexte.includes("monde", 12))
 
-let leTexte = "Bonjour le monde, bienvenue dans l'univers.";
-console.log(leTexte.startsWith("Bonjour"))
-console.log(leTexte.startsWith("monde"))
-console.log(leTexte.startsWith("monde", 11))
-console.log(leTexte.startsWith("monde", 12))
+// let leTexte = "Bonjour le monde, bienvenue dans l'univers.";
+// console.log(leTexte.startsWith("Bonjour"))
+// console.log(leTexte.startsWith("monde"))
+// console.log(leTexte.startsWith("monde", 11))
+// console.log(leTexte.startsWith("monde", 12))
 
 
 //String/String Search/endsWith
-let leTexte = "Jean Pierre";
-console.log(leTexte.endsWith("Pierre"))
+// let leTexte = "Jean Pierre";
+// console.log(leTexte.endsWith("Pierre"))
 
-let leTexte = "Bonjour le monde, bienvenue dans l'univers.";
-console.log(leTexte.endsWith("monde", 11))
-console.log(leTexte.endsWith("monde", 12))
+// let leTexte = "Bonjour le monde, bienvenue dans l'univers.";
+// console.log(leTexte.endsWith("monde", 11))
+// console.log(leTexte.endsWith("monde", 12))
 
 
 //Strings/String Reference
 //Numbers/Numbers
-let x = 123e5;
-console.log(x)
+// let x = 123e5;
+// console.log(x)
 
 
 //Numbers/Numbers
-let x = 0.2 + 0.1;
-let y = (0.2 * 10 + 0.1 * 10) / 10
-console.log(x)
-console.log(y)
+// let x = 0.2 + 0.1;
+// let y = (0.2 * 10 + 0.1 * 10) / 10
+// console.log(x)
+// console.log(y)
 
-let v = 4;
-let w = 5;
-let x = "10";
-let y = "20";
-let z = x + y;
-let z1 = w + x;
-let z12 = x + w;
-let z2 = "Le resultat est: " + w + v;
-let z3 = v + w + x;
-console.log(z)
-console.log(z1)
-console.log(z2)
-console.log(z12)
-cobsole.log(z3)
+// let v = 4;
+// let w = 5;
+// let x = "10";
+// let y = "20";
+// let z = x + y;
+// let z1 = w + x;
+// let z12 = x + w;
+// let z2 = "Le resultat est: " + w + v;
+// let z3 = v + w + x;
+// console.log(z)
+// console.log(z1)
+// console.log(z2)
+// console.log(z12)
+// cobsole.log(z3)
 
-let x = "100";
-let y = "200";
-let z = y / x;
-let z1 = y * x;
-let z2 = y - x;
-console.log(z)
-console.log(z1)
+// let x = "100";
+// let y = "200";
+// let z = y / x;
+// let z1 = y * x;
+// let z2 = y - x;
+// console.log(z)
+// console.log(z1)
 
-let x = 100 / "Pomme";
-console.log(x)
-console.log(isNaN)
+// let x = 100 / "Pomme";
+// console.log(x)
+// console.log(isNaN)
 
-let x = NaN;
-let y = "5";
-let z = x + y;
-console.log(z)
+// let x = NaN;
+// let y = "5";
+// let z = x + y;
+// console.log(z)
 
-let x = NaN;
-let y = 5;
-let z = x + y;
-console.log(z)
+// let x = NaN;
+// let y = 5;
+// let z = x + y;
+// console.log(z)
 
-let x = NaN;
-console.log(typeof(x))
+// let x = NaN;
+// console.log(typeof(x))
 
-let leNombre = 2;
+// let leNombre = 2;
 
-while (leNombre != Infinity) {
-    leNombre = leNombre * leNombre;
-}
+// while (leNombre != Infinity) {
+//     leNombre = leNombre * leNombre;
+// }
 
-let x = 2 / 0;
-console.log(x)
+// let x = 2 / 0;
+// console.log(x)
 
-let y = -2 / 0;
-console.log(y)
-console.log(typeof(y))
+// let y = -2 / 0;
+// console.log(y)
+// console.log(typeof(y))
 
-let z = 0xFF;
-console.log(z)
+// let z = 0xFF;
+// console.log(z)
+
+// let monNombre = 32;
+// monNombre.toString(32);
+// monNombre.toString(16);
+// monNombre.toString(10);
+// monNombre.toString(8);
+// monNombre.toString(2);
+
+// console.log(monNombre);
+
+// let y = new Number(123);
+// console.log(123)
+
+// let x = 123;
+// console.log(typeof(x))
+// let y = new Number(123);
+// console.log(typeof(y))
+
+// let x = 500;
+// let y = new Number(500);
+// console.log(x == y)
+// console.log(x === y)
+
+// let x = new Number(500);
+// let y = new Number(500);
+// console.log(x == y)
+// console.log(x === y)
+
+//Numbers/Number Methods
+// let x = 123;
+// x.toString();
+// (123).toString();
+// (100 + 23).toString();
+// console.log(x)
+
+// let x = 123;
+
+// let leTexte = x.toString(2);
+// console.log(leTexte)
 
 
+// let x = 9.656;
 
+// let y = x.toExponential(2);
+// let z = x.toExponential(4);
+// let a = x.toExponential(6);
 
+// console.log(y)
+// console.log(z)
+// console.log(a)
 
+// let a = 9.656;
+// let b = a.toFixed(0);
+// let c = a.toFixed(2);
+// let d = a.toFixed(4);
+// let e = a.toFixed(6);
+
+// console.log(b)
+// console.log(c)
+// console.log(d)
+// console.log(e)
+
+//Numbers/Number Methods/The toPrecision() Method
