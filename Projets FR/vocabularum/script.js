@@ -20,4 +20,47 @@ let grilleMots = Array(ESSAIS_MAX).fill("").map(() => Array(LONGUEUR_MOT).fill("
 // Initialisation de l'interface (Inicjalizacja interfejsu)
 document.addEventListener("DOMContentLoaded", () => {
     creerGrille();
-})
+    creerClavier();
+    ecouterClavierPhysique;
+});
+
+// Initialisation de l'interface (Inicjalizacja interfejsu)
+function creerGrille() {
+    const grilleConteneur = document.getElementById("game-grid");
+
+    for (let r = 0; r < ESSAIS_MAX; r++) {
+        const ligne = document.createElement("div");
+        ligne.className = "row";
+        ligne.dataset.row = r;
+
+        for (let c = 0; c < LONGUEUR_MOT; c++) {
+            const caseLettre = document.createElement("div");
+            caseLettre.className = "tile";
+            caseLettre.dataset.row = r;
+            caseLettre.dataset.col = c;
+            ligne.appendChild(caseLettre);
+        }
+
+        grilleConteneur.appendChild(ligne);
+    }
+}
+
+// Creation du clavier virtuel (Tworzenie wirtualnej klawiatury)
+function creerClavier() {
+    const conteneurClavier = document.getElementById("keyboard");
+    const dispositionClavier = [
+        ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+        ["L", "M", "N", "O", "P", "Q", "R", "S", "T"],
+        ["ENTER", "U", "V", "X", "Z", "BACKSPACE"]
+    ];
+
+    dispositionClavier.forEach(ligneMots => {
+        const ligneElement = document.createElement("div");
+        ligneElement.className = "keyboard0-row";
+
+        ligneMots.forEach(cle => {
+            const boutonCle = document.createElement("button");
+            boutonCle.textContent = cle === "BACKSPACE" ? "⌫" : cle;
+        })
+    })
+}

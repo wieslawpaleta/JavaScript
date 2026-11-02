@@ -8,3 +8,83 @@ body {
     margin: 0;
     padding: 20px;
 }
+
+h1 {
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+p {
+    color: #818384;
+    margin-top: 0;
+}
+
+/* Grille de jeu (Siatka gry) */
+.grid {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 5px;
+    margin-bottom: 30px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.tile {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #3a3a3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Couleurs des états des lettres (Kolory stanów liter) */
+.tile.correct {
+    background-color: #538d4e; /* Vert / Zielony - Bonne lettre, bonne position */
+    border-color: #538d4e;
+}
+
+.tile.present {
+    background-color: #b59f3b; /* Jaune / Żółty - Bonne lettre, mauvaise position */
+    border-color: #b59f3b;
+}
+
+.tile.absent {
+    background-color: #3a3a3c; /* Gris / Szary - Lettre absente du mot */
+    border-color: #3a3a3c;
+}
+
+/* Clavier (Klawiatura) */
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.key {
+    background-color: #818384;
+    color: white;
+    border: none;
+    padding: 12px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.key.large {
+    padding: 12px 16px;
+}
