@@ -61,6 +61,52 @@ function creerClavier() {
         ligneMots.forEach(cle => {
             const boutonCle = document.createElement("button");
             boutonCle.textContent = cle === "BACKSPACE" ? "⌫" : cle;
-        })
-    })
+            boutonCle.className = "key";
+            if (cle === "ENTER"  || cle === "BACKSPACE") {
+                boutonCle.classList.add("large");
+            }
+
+            boutonCle.addEventListener("click", () => traiterTouche(cle));
+            ligneElement.appendChild(boutonCle);
+        });
+
+        conteneurClavier.appendChild(boutonCle);
+    });
+}
+
+// Ecouter les evenements du clavier physique (Słuchanie zdarzeń fizycznej klawiatury)
+function ecouterClavierPhysique() {
+    document.addEventListener("keydown", (e) => {
+        const touche = e.key.toUpperCase();
+        if (touche === "ENTER") {
+            traiterTouche("ENTER");
+    } else if (touche === "BACKSPACE") {
+        traiterTouche("BACKSPACE");
+    } else if (/^[A-Z]$/.test(touche)) {
+        traiterTouche(touche);
+    });
+}
+
+// Gestion de la logique de frapper (Obsługa logiki naciskania klawiszy)
+function traiterTouche(touche) {
+    if (touche === "ENTER") {
+        validerEssai();
+    } else if (touche === "BACKSPACE") {
+        effacerLettre();
+    } else if (lettreActuelle < LONGUEUR_MOT && essaiActuel < ESSAIS_MAX) {
+        ajouterLettre(touche);
+    }
+}
+
+function ajouterLettre(lettre) {
+    grilleMots[essaiActuel][lettreActuelle] = lettre;
+    const caseElement = document.querySelector(`[data-row='${essaiActuel}'][data-col='${lettreActuelle}']`);
+    caseElement.textContent = lettre;
+    lettreActuelle++;
+}
+
+function effacerLettre(lettre) {
+    if (lettreActuelle > 0) {
+        grilleMots[essaiActuel][lettreActuelle] = lettre;
+        cons
 }
