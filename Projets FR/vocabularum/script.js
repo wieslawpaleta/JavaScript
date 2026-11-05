@@ -1,9 +1,4 @@
-// Liste de mots en latin classique de 5 lettres (Lista słów w klasycznej łacinie o długości 5 liter)
-// Note: En latin classique, nous utilisons 'V' et non 'U' de préférence, mais ici nous gardons l'alphabet moderne pour la simplicité du jeu.
-// (Uwaga: W klasycznej łacinie częściej używa się 'V' zamiast 'U', ale tutaj zachowujemy współczesny alfabet dla prostoty gry).
 const MOTS_LATINS = ["AMICUS", "DOMUS", "EQUUS", "ACERB", "NUBES", "ARBOR", "IGNIS", "CORPUS"];
-
-// Choix aléatoire du mot secret (Losowy wybór ukrytego słowa)
 const motSecret = MOTS_LATINS[Math.floor(Math.random() * MOTS_LATINS.length)];
 
 const ESSAIS_MAX = 6;
@@ -12,23 +7,19 @@ const LONGUEUR_MOT = 5;
 let essaiActuel = 0;
 let lettreActuelle = 0;
 let grilleMots = Array(ESSAIS_MAX).fill("").map(() => Array(LONGUEUR_MOT).fill(""));
+let jeuFini = false; // Bloquer la saisie à la fin de la partie (Zablokowanie wpisywania po końcu gry)
 
-// Initialisation de l'interface (Inicjalizacja interfejsu)
 document.addEventListener("DOMContentLoaded", () => {
     creerGrille();
     creerClavier();
     ecouterClavierPhysique();
 });
 
-// Création de la grille HTML (Tworzenie siatki HTML)
 function creerGrille() {
     const grilleConteneur = document.getElementById("game-grid");
-    
     for (let r = 0; r < ESSAIS_MAX; r++) {
         const ligne = document.createElement("div");
         ligne.className = "row";
-        ligne.dataset.row = r;
-
         for (let c = 0; c < LONGUEUR_MOT; c++) {
             const caseLettre = document.createElement("div");
             caseLettre.className = "tile";
@@ -36,12 +27,10 @@ function creerGrille() {
             caseLettre.dataset.col = c;
             ligne.appendChild(caseLettre);
         }
-
         grilleConteneur.appendChild(ligne);
     }
 }
 
-// Création du clavier virtuel (Tworzenie wirtualnej klawiatury)
 function creerClavier() {
     const conteneurClavier = document.getElementById("keyboard");
     const dispositionClavier = [
@@ -58,6 +47,7 @@ function creerClavier() {
             const boutonCle = document.createElement("button");
             boutonCle.textContent = cle === "BACKSPACE" ? "⌫" : cle;
             boutonCle.className = "key";
+            boutonCle.dataset.key = cle; // Attribut pour sélectionner la touche facilement (Atrybut do łatwego wyboru klawisza)
             if (cle === "ENTER" || cle === "BACKSPACE") {
                 boutonCle.classList.add("large");
             }
@@ -70,9 +60,10 @@ function creerClavier() {
     });
 }
 
-// Écouter les événements du clavier physique (Słuchanie zdarzeń fizycznej klawiatury)
 function ecouterClavierPhysique() {
     document.addEventListener("keydown", (e) => {
+        if (jeuFini) return;
+        
         const touche = e.key.toUpperCase();
         if (touche === "ENTER") {
             traiterTouche("ENTER");
@@ -84,8 +75,9 @@ function ecouterClavierPhysique() {
     });
 }
 
-// Gestion de la logique de frappe (Obsługa logiki naciskania klawiszy)
 function traiterTouche(touche) {
+    if (jeuFini) return;
+
     if (touche === "ENTER") {
         validerEssai();
     } else if (touche === "BACKSPACE") {
@@ -99,6 +91,11 @@ function ajouterLettre(lettre) {
     grilleMots[essaiActuel][lettreActuelle] = lettre;
     const caseElement = document.querySelector(`[data-row='${essaiActuel}'][data-col='${lettreActuelle}']`);
     caseElement.textContent = lettre;
+    
+    // Déclencher l'animation Pop (Wywołanie animacji Pop)
+    caseElement.classList.add("pop");
+    caseElement.addEventListener("animationend", () => caseElement.classList.remove("pop"), { once: true });
+
     lettreActuelle++;
 }
 
@@ -111,7 +108,6 @@ function effacerLettre() {
     }
 }
 
-// Vérification du mot soumis (Sprawdzanie zgłoszonego słowa)
 function validerEssai() {
     if (lettreActuelle !== LONGUEUR_MOT) {
         alert("Le mot doit faire 5 lettres ! (Słowo musi mieć 5 liter!)");
@@ -120,10 +116,43 @@ function validerEssai() {
 
     const motPropose = grilleMots[essaiActuel].join("");
     
-    // Comparaison des lettres (Porównywanie liter)
+    // Animation séquentielle des cases (Sekwencyjna animacja kafelków)
     for (let i = 0; i < LONGUEUR_MOT; i++) {
         const caseElement = document.querySelector(`[data-row='${essaiActuel}'][data-col='${i}']`);
         const lettreProposee = motPropose[i];
+        const boutonClavier = document.querySelector(`[data-key='${lettreProposee}']`);
+
+        // Utilisation de setTimeout pour décaler chaque case (Użycie setTimeout dla opóźnienia każdego kafelka)
+        setTimeout(() => {
+            caseElement.classList.add("flip");
+
+            // Au milieu du retournement (à 250ms), changer la couleur (W połowie obrotu (przy 250ms), zmień kolor)
+            setTimeout(() => {
+                let statutLettre = "";
+                if (lettreProposee === motSecret[i]) {
+                    statutLettre = "correct";
+                } else if (motSecret.includes(lettreProposee)) {
+                    statutLettre = "present";
+                } else {
+                    statutLettre = "absent";
+                }
+
+                caseElement.classList.add(statutLettre);
+                
+                // Mettre à jour la couleur du clavier virtuel (Aktualizacja koloru wirtualnej klawiatury)
+                if (boutonClavier) {
+                    if (statutLettre === "correct") {
+                        boutonClavier.className = "key correct";
+                    } else if (statutLettre === "present" && !boutonClavier.classList.contains("correct")) {
+                        boutonClavier.className = "key present";
+                    } else if (!boutonClavier.classList.contains("correct") && !boutonClavier.classList.contains("present")) {
+                        boutonClavier.className = "key absent";
+                    }
+                }
+            }, 250);
+
+        }, i * 300); // 300ms de décalage entre chaque lettre (300ms opóźnienia między każdą literą)
+    }
 
         if (lettreProposee === motSecret[i]) {
             caseElement.classList.add("correct");
@@ -134,6 +163,7 @@ function validerEssai() {
         }
     }
 
+    // Gestion
     if (motPropose === motSecret) {
         setTimeout(() => alert("Félicitations ! Vous avez gagné ! (Gratulacje! Wygrałeś!)"), 100);
     } else if (essaiActuel === ESSAIS_MAX - 1) {

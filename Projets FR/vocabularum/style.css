@@ -43,21 +43,58 @@ p {
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
+    /* Transition fluide pour la bordure (Płynne przejście dla obramowania) */
+    transition: border-color 0.15s ease-in-out;
 }
 
-/* Couleurs des états des lettres (Kolory stanów liter) */
+/* Animation 1 : Animation lorsqu'on entre une lettre (Animacja podczas wprowadzania litery) */
+.tile.pop {
+    animation: pop 0.1s ease-in-out;
+    border-color: #565758;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Animation 2 : Animation de retournement 3D (Animacja obrotu 3D) */
+.tile.flip {
+    animation: flip 0.5s ease-in-out forwards;
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+/* Couleurs appliquées après le retournement (Kolory nakładane po obrocie) */
 .tile.correct {
-    background-color: #538d4e; /* Vert / Zielony - Bonne lettre, bonne position */
+    background-color: #538d4e; /* Vert / Zielony */
     border-color: #538d4e;
 }
 
 .tile.present {
-    background-color: #b59f3b; /* Jaune / Żółty - Bonne lettre, mauvaise position */
+    background-color: #b59f3b; /* Jaune / Żółty */
     border-color: #b59f3b;
 }
 
 .tile.absent {
-    background-color: #3a3a3c; /* Gris / Szary - Lettre absente du mot */
+    background-color: #3a3a3c; /* Gris / Szary */
     border-color: #3a3a3c;
 }
 
@@ -83,8 +120,22 @@ p {
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
+    transition: background-color 0.3s ease;
 }
 
 .key.large {
     padding: 12px 16px;
+}
+
+/* Couleurs mises à jour sur le clavier virtuel (Zaktualizowane kolory na wirtualnej klawiaturze) */
+.key.correct {
+    background-color: #538d4e;
+}
+
+.key.present {
+    background-color: #b59f3b;
+}
+
+.key.absent {
+    background-color: #3a3a3c;
 }
