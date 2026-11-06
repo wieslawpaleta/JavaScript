@@ -1,4 +1,9 @@
+// Declaration d'un tableau contenant les mots secrets possibles (Definiowanie tablicy zawierającej możliwe tajne słowa)
 const MOTS_LATINS = ["AMICUS", "DOMUS", "EQUUS", "ACERB", "NUBES", "ARBOR", "IGNIS", "CORPUS"];
+
+// Declaration d'un tableau elargi contenant tous les mots valides acceptes par le jeu (Definiowanie rozszerzonej tablicy zawierającej wszystkie poprawne słowa akceptowane przez grę) 
+cosnt MOTS_VALIDES = 
+
 const motSecret = MOTS_LATINS[Math.floor(Math.random() * MOTS_LATINS.length)];
 
 const ESSAIS_MAX = 6;
@@ -154,22 +159,17 @@ function validerEssai() {
         }, i * 300); // 300ms de décalage entre chaque lettre (300ms opóźnienia między każdą literą)
     }
 
-        if (lettreProposee === motSecret[i]) {
-            caseElement.classList.add("correct");
-        } else if (motSecret.includes(lettreProposee)) {
-            caseElement.classList.add("present");
+    // Gestion de la fin de partie après la fin des animations (Obsługa końca gry po zakończeniu animacji)
+    setTimeout(() => {
+        if (motPropose === motSecret) {
+            jeuFini = true;
+            alert("Félicitations ! Vous avez gagné ! (Gratulacje! Wygrałeś!)");
+        } else if (essaiActuel === ESSAIS_MAX - 1) {
+            jeuFini = true;
+            alert(`Défaite ! Le mot était : ${motSecret} (Porażka! Słowem było: ${motSecret})`);
         } else {
-            caseElement.classList.add("absent");
+            essaiActuel++;
+            lettreActuelle = 0;
         }
-    }
-
-    // Gestion
-    if (motPropose === motSecret) {
-        setTimeout(() => alert("Félicitations ! Vous avez gagné ! (Gratulacje! Wygrałeś!)"), 100);
-    } else if (essaiActuel === ESSAIS_MAX - 1) {
-        setTimeout(() => alert(`Défaite ! Le mot était : ${motSecret} (Porażka! Słowem było: ${motSecret})`), 100);
-    } else {
-        essaiActuel++;
-        lettreActuelle = 0;
-    }
+    }, LONGUEUR_MOT * 300 + 100);
 }
