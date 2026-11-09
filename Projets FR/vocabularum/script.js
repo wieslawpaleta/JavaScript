@@ -1,37 +1,67 @@
-// Declaration d'un tableau contenant les mots secrets possibles (Definiowanie tablicy zawierającej możliwe tajne słowa)
-const MOTS_LATINS = ["AMICUS", "DOMUS", "EQUUS", "ACERB", "NUBES", "ARBOR", "IGNIS", "CORPUS"];
+// Déclaration d'un tableau contenant les mots secrets possibles (Definiowanie tablicy zawierającej możliwe tajne słowa)
+const MOTS_SECRETS = ["AMICUS", "DOMUS", "EQUUS", "NUBES", "ARBOR", "IGNIS", "CORPUS"];
 
-// Declaration d'un tableau elargi contenant tous les mots valides acceptes par le jeu (Definiowanie rozszerzonej tablicy zawierającej wszystkie poprawne słowa akceptowane przez grę) 
-cosnt MOTS_VALIDES = 
+// Déclaration d'un tableau élargi contenant tous les mots valides acceptés par le jeu (Definiowanie rozszerzonej tablicy zawierającej wszystkie poprawne słowa akceptowane przez grę)
+const MOTS_VALIDES = ["AMICUS", "DOMUS", "EQUUS", "NUBES", "ARBOR", "IGNIS", "CORPUS", "ROSAE", "PUERI", "MAGNA", "VERUM"];
 
-const motSecret = MOTS_LATINS[Math.floor(Math.random() * MOTS_LATINS.length)];
+// Sélection aléatoire d'un mot secret parmi le tableau MOTS_SECRETS (Losowy wybór tajnego słowa z tablicy MOTS_SECRETS)
+const motSecret = MOTS_SECRETS[Math.floor(Math.random() * MOTS_SECRETS.length)];
 
+// Définition du nombre maximum d'essais autorisés (Definiowanie maksymalnej dozwolonej liczby prób)
 const ESSAIS_MAX = 6;
+
+// Définition de la longueur obligatoire de chaque mot (Definiowanie obowiązkowej długości każdego słowa)
 const LONGUEUR_MOT = 5;
 
+// Variable pour suivre la ligne (l'essai) actuelle du joueur, commence à 0 (Zmienna śledząca aktualny wiersz (próbę) gracza, zaczyna się od 0)
 let essaiActuel = 0;
-let lettreActuelle = 0;
-let grilleMots = Array(ESSAIS_MAX).fill("").map(() => Array(LONGUEUR_MOT).fill(""));
-let jeuFini = false; // Bloquer la saisie à la fin de la partie (Zablokowanie wpisywania po końcu gry)
 
+// Variable pour suivre la colonne (la lettre) actuelle dans la ligne, commence à 0 (Zmienna śledząca aktualną kolumnę (literę) w wierszu, zaczyna się od 0)
+let lettreActuelle = 0;
+
+// Création d'une grille vide sous forme de matrice 2D (6 lignes, 5 colonnes) (Tworzenie pustej siatki w formie macierzy 2D (6 wierszy, 5 kolumn))
+let grilleMots = Array(ESSAIS_MAX).fill("").map(() => Array(LONGUEUR_MOT).fill(""));
+
+// Variable booléenne pour bloquer le jeu une fois qu'il est gagné ou perdu (Zmienna logiczna do zablokowania gry po jej wygraniu lub przegraniu)
+let jeuFini = false;
+
+// Attente que tout le document HTML soit chargé avant d'exécuter le code (Oczekiwanie na załadowanie całego dokumentu HTML przed uruchomieniem kodu)
 document.addEventListener("DOMContentLoaded", () => {
+    // Appel de la fonction pour créer la grille visuelle (Wywołanie funkcji tworzącej wizualną siatku)
     creerGrille();
+    // Appel de la fonction pour créer le clavier virtuel (Wywołanie funkcji tworzącej wirtualną klawiaturę)
     creerClavier();
+    // Appel de la fonction pour écouter le clavier de l'ordinateur (Wywołanie funkcji nasłuchującej klawiaturę komputera)
     ecouterClavierPhysique();
 });
 
+// Fonction qui génère les cases de la grille dans le HTML (Funkcja generująca kafelki siatki w HTML)
 function creerGrille() {
+    // Récupération de l'élément conteneur de la grille depuis le HTML (Pobranie elementu kontenera siatki z HTML)
     const grilleConteneur = document.getElementById("game-grid");
+    
+    // Boucle pour créer les 6 lignes (Pętla tworząca 6 wierszy)
     for (let r = 0; r < ESSAIS_MAX; r++) {
+        // Création d'un élément div pour la ligne (Utworzenie elementu div dla wiersza)
         const ligne = document.createElement("div");
+        // Attribution de la classe CSS "row" à la ligne (Przypisanie klasy CSS "row" do wiersza)
         ligne.className = "row";
+        
+        // Boucle interne pour créer les 5 colonnes (lettres) par ligne (Wewnętrzna pętla tworząca 5 kolumn (liter) w wierszu)
         for (let c = 0; c < LONGUEUR_MOT; c++) {
+            // Création d'un élément div pour une case individuelle (Utworzenie elementu div dla pojedynczego kafelka)
             const caseLettre = document.createElement("div");
+            // Attribution de la classe CSS "tile" à la case (Przypisanie klasy CSS "tile" do kafelka)
             caseLettre.className = "tile";
+            // Stockage du numéro de ligne dans un attribut de données (Przechowywanie numeru wiersza w atrybucie danych)
             caseLettre.dataset.row = r;
+            // Stockage du numéro de colonne dans un attribut de données (Przechowywanie numeru kolumny w atrybucie danych)
             caseLettre.dataset.col = c;
+            // Ajout de la case à l'intérieur de la ligne (Dodanie kafelka do wewnątrz wiersza)
             ligne.appendChild(caseLettre);
         }
+        
+        // Ajout de la ligne complète à l'intérieur du conteneur principal de la grille (Dodanie kompletnego wiersza do głównego kontenera siatki)
         grilleConteneur.appendChild(ligne);
     }
 }
