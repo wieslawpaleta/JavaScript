@@ -25,6 +25,49 @@ let grilleMots = Array(ESSAIS_MAX).fill("").map(() => Array(LONGUEUR_MOT).fill("
 // Variable booléenne pour bloquer le jeu une fois qu'il est gagné ou perdu (Zmienna logiczna do zablokowania gry po jej wygraniu lub przegraniu)
 let jeuFini = false;
 
+// --- GESTION DES STATISTIQUES VIA LOCALSTORAGE (ZARZĄDZANIE STATYSTYKAMI ZA POMOCĄ LOCALSTORAGE) ---
+// Fonction pour récupérer les statistiques enregistrées dans le navigateur (Funkcja pobierająca statystyki zapisane w przeglądarce)
+function chargerStatistiques() {
+    // Récupération de la chaîne JSON depuis le localStorage (Pobranie ciągu JSON z localStorage)
+    const statsEnregistrees = localStorage.getItem("wordle_latin_stats");
+    
+    // Si des statistiques existent déjà, on les convertit en objet JS, sinon on retourne des valeurs par défaut (Jeśli statystyki już istnieją, konwertujemy je na obiekt JS, w przeciwnym razie zwracamy domyślne wartości)
+    if (statsEnregistrees) {
+        return JSON.parse(statsEnregistrees);
+    } else {
+        return {
+            partiesJouees: 0,
+            partiesGagnees: 0,
+            serieActuelle: 0,
+            meilleureSerie: 0
+        };
+    }
+}
+
+// Fonction pour sauvegarder les statistiques dans le navigateur (Funkcja do zapisywania statystyk w przeglądarce)
+function sauvegarderStatistiques(stats) {
+    // Conversion de l'objet en chaîne JSON et stockage dans le localStorage (Konwersja obiektu na ciąg JSON i zapisanie w localStorage)
+    localStorage.setItem("wordle_latin_stats", JSON.stringify(stats));
+}
+
+// Fonction pour mettre à jour les statistiques à la fin d'une partie (Funkcja aktualizująca statystyki na koniec gry)
+function mettreAJourStatistiques(victoire) {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Attente que tout le document HTML soit chargé avant d'exécuter le code (Oczekiwanie na załadowanie całego dokumentu HTML przed uruchomieniem kodu)
 document.addEventListener("DOMContentLoaded", () => {
     // Appel de la fonction pour créer la grille visuelle (Wywołanie funkcji tworzącej wizualną siatku)

@@ -139,3 +139,79 @@ p {
 .key.absent {
     background-color: #3a3a3c;
 }
+
+/* Styles pour la fenêtre modale des statistiques (Style dla okna modalnego statystyk) */
+.modal {
+    display: none; /* Caché par défaut / Ukryte domyślnie */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fond noir semi-transparent / Półprzezroczyste czarne tło */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.visible {
+    display: flex; /* Affiché quand la classe 'visible' est ajoutée / Wyświetlane po dodaniu klasy 'visible' */
+}
+
+.modal-content {
+    background-color: #1a1a1b;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #3a3a3c;
+    width: 320px;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #ffffff;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-box {
+    background-color: #272729;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #818384;
+    margin-top: 5px;
+}
+
+.btn-restart {
+    background-color: #538d4e;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.btn-restart:hover {
+    background-color: #42723d;
+}

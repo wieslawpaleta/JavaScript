@@ -14,12 +14,38 @@
     </header>
 
     <main>
-        <!-- Grille de jeu de 6 essais x 5 lettres (Siatka gry: 6 prób x 5 liter) -->
+        <!-- Grille de jeu (Siatka gry) -->
         <div id="game-grid" class="grid"></div>
 
         <!-- Clavier virtuel (Wirtualna klawiatura) -->
         <div id="keyboard" class="keyboard"></div>
     </main>
+
+    <!-- Fenêtre modale des statistiques (Wyskakujące okno ze statystykami) -->
+    <div id="stats-modal" class="modal">
+        <div class="modal-content">
+            <h2>Statistiques (Statystyki)</h2>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span id="stat-jouees" class="stat-number">0</span>
+                    <span class="stat-label">Jouées (Rozegrane)</span>
+                </div>
+                <div class="stat-box">
+                    <span id="stat-victoires" class="stat-number">0</span>
+                    <span class="stat-label">Victoires % (Wygrane %)</span>
+                </div>
+                <div class="stat-box">
+                    <span id="stat-serie" class="stat-number">0</span>
+                    <span class="stat-label">Série actuelle (Aktualna seria)</span>
+                </div>
+                <div class="stat-box">
+                    <span id="stat-max-serie" class="stat-number">0</span>
+                    <span class="stat-label">Meilleure série (Najlepsza seria)</span>
+                </div>
+            </div>
+            <button id="btn-rejouer" class="btn-restart">Rejouer (Zagraj ponownie)</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
