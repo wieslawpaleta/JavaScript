@@ -1,3 +1,6 @@
+// DICTIONNAIRE DES DÉFINITIONS ET ÉTYMOLOGIES 
+
+
 // Déclaration d'un tableau contenant les mots secrets possibles (Definiowanie tablicy zawierającej możliwe tajne słowa)
 const MOTS_SECRETS = ["AMICUS", "DOMUS", "EQUUS", "NUBES", "ARBOR", "IGNIS", "CORPUS"];
 
@@ -52,21 +55,51 @@ function sauvegarderStatistiques(stats) {
 
 // Fonction pour mettre à jour les statistiques à la fin d'une partie (Funkcja aktualizująca statystyki na koniec gry)
 function mettreAJourStatistiques(victoire) {
+    // Chargement des stats actuelles (Ładowanie aktualnych statystyk)
+    let stats = chargerStatistiques();
+    
+    // Incrémentation du nombre de parties jouées (Inkrementacja liczby rozegranych gier)
+    stats.partiesJouees++;
 
+    if (victoire) {
+        // Incrémentation du nombre de victoires (Inkrementacja liczby wygranych)
+        stats.partiesGagnees++;
+        // Augmentation de la série actuelle (Zwiększenie aktualnej serii)
+        stats.serieActuelle++;
+        
+        // Si la série actuelle dépasse la meilleure, on met à jour la meilleure série (Jeśli aktualna seria przekracza najlepszą, aktualizujemy najlepszą serię)
+        if (stats.serieActuelle > stats.meilleureSerie) {
+            stats.meilleureSerie = stats.serieActuelle;
+        }
+    } else {
+        // Remise à zéro de la série actuelle en cas de défaite (Reset aktualnej serii w przypadku porażki)
+        stats.serieActuelle = 0;
+    }
+
+    // Sauvegarde des nouvelles stats (Zapisanie nowych statystyk)
+    sauvegarderStatistiques(stats);
+    
+    // Affichage des stats dans la modale HTML (Wyświetlenie statystyk w HTML modalu)
+    afficherFenetreStats(stats);
 }
 
+// Fonction pour afficher la modale avec les bonnes valeurs (Funkcja wyświetlająca modal z odpowiednimi wartościami)
+function afficherFenetreStats(stats) {
+    // Calcul du pourcentage de victoires (Obliczenie procentu wygranych)
+    const pourcentageVictoires = stats.partiesJouees > 0 
+        ? Math.round((stats.partiesGagnees / stats.partiesJouees) * 100) 
+        : 0;
 
+    // Injection des valeurs dans les éléments HTML (Wstrzyknięcie wartości do elementów HTML)
+    document.getElementById("stat-jouees").textContent = stats.partiesJouees;
+    document.getElementById("stat-victoires").textContent = pourcentageVictoires + "%";
+    document.getElementById("stat-serie").textContent = stats.serieActuelle;
+    document.getElementById("stat-max-serie").textContent = stats.meilleureSerie;
 
-
-
-
-
-
-
-
-
-
-
+    // Affichage de la modale en ajoutant la classe "visible" (Wyświetlenie modalu poprzez dodanie klasy "visible")
+    document.getElementById("stats-modal").classList.add("visible");
+}
+// -------------------------------------------------------------
 
 // Attente que tout le document HTML soit chargé avant d'exécuter le code (Oczekiwanie na załadowanie całego dokumentu HTML przed uruchomieniem kodu)
 document.addEventListener("DOMContentLoaded", () => {
@@ -76,6 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
     creerClavier();
     // Appel de la fonction pour écouter le clavier de l'ordinateur (Wywołanie funkcji nasłuchującej klawiaturę komputera)
     ecouterClavierPhysique();
+
+    // Écouteur de clic sur le bouton "Rejouer" pour recharger la page (Nasłuchiwanie kliknięcia przycisku "Zagraj ponownie", aby odświeżyć stronę)
+    document.getElementById("btn-rejouer").addEventListener("click", () => {
+        location.reload();
+    });
 });
 
 // Fonction qui génère les cases de la grille dans le HTML (Funkcja generująca kafelki siatki w HTML)
