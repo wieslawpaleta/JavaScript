@@ -1,11 +1,42 @@
-// DICTIONNAIRE DES DÉFINITIONS ET ÉTYMOLOGIES 
+// CORRECTION : DICTIONNAIRE AVEC UNIQUEMENT DES MOTS DE 5 LETTRES ---
+// Objet contenant les définitions et l'étymologie pour chaque mot secret de 5 lettres (Obiekt zawierający definicje i etymologię dla każdego tajnego słowa o długości 5 liter)
+const DICTIONNAIRE_INFOS = {
+    "DOMUS": {
+        definition: "Maison, foyer, demeure familiale. (Dom, ognisko domowe, siedziba rodzinna.)",
+        etymologie: "Mot indo-européen très ancien signifiant bâtir/habiter. (Bardzo stary słowo indoeuropejskie oznaczające budowanie/zamieszkiwanie.)"
+    },
+    "EQUUS": {
+        definition: "Cheval, monture. (Koń, wierzchowiec.)",
+        etymologie: "Du proto-indo-européen *h₁ekwos* (le rapide). (Z protoindoeuropejskiego *h₁ekwos* (szybki).)"
+    },
+    "NUBES": {
+        definition: "Nuage, nuée, obscurité. (Chmura, obłok, ciemność.)",
+        etymologie: "Lié au verbe nubere (voiler, se marier). (Powiązane z czasownikiem nubere (zasłaniać, brać ślub).)"
+    },
+    "ARBOR": {
+        definition: "Arbre, mât, gibet. (Drzewo, maszt, szubienica.)",
+        etymologie: "Origine incertaine en latin classique, désignant la structure ligneuse. (Niepewne pochodzenie w klasycznej łacinie, oznaczające strukturę drzewiastą.)"
+    },
+    "IGNIS": {
+        definition: "Feu, flamme, passion. (Ogień, płomień, pasja.)",
+        etymologie: "Apparenté au sanskrit *agni* (dieu du feu). (Pokrewne z sanskryckim *agni* (bóg ognia).)"
+    },
+    "TERRA": {
+        definition: "Terre, sol, pays, territoire. (Ziemia, gleba, kraj, terytorium.)",
+        etymologie: "Racine liée au fait de sécher ou d'être sec par rapport à la mer. (Rdzeń powiązany z wysychaniem lub byciem suchym w stosunku do morza.)"
+    },
+    "VERUM": {
+        definition: "Le vrai, la vérité, réel. (Prawda, prawdziwość, rzeczywisty.)",
+        etymologie: "Issu d'une racine indo-européenne signifiant 'confiance' ou 'fidélité'. (Pochodzi z indoeuropejskiego rdzenia oznaczającego 'zaufanie' lub 'lojalność'.)"
+    }
+};
+// ---------------------------------------------------------------------
 
+// Tableau des mots secrets (tous font strictement 5 lettres) (Tablica tajnych słów (wszystkie mają dokładnie 5 liter))
+const MOTS_SECRETS = ["DOMUS", "EQUUS", "NUBES", "ARBOR", "IGNIS", "TERRA", "VERUM"];
 
-// Déclaration d'un tableau contenant les mots secrets possibles (Definiowanie tablicy zawierającej możliwe tajne słowa)
-const MOTS_SECRETS = ["AMICUS", "DOMUS", "EQUUS", "NUBES", "ARBOR", "IGNIS", "CORPUS"];
-
-// Déclaration d'un tableau élargi contenant tous les mots valides acceptés par le jeu (Definiowanie rozszerzonej tablicy zawierającej wszystkie poprawne słowa akceptowane przez grę)
-const MOTS_VALIDES = ["AMICUS", "DOMUS", "EQUUS", "NUBES", "ARBOR", "IGNIS", "CORPUS", "ROSAE", "PUERI", "MAGNA", "VERUM"];
+// Tableau élargi des mots valides (tous font strictement 5 lettres) (Rozszerzona tablica poprawnych słów (wszystkie mają dokładnie 5 liter))
+const MOTS_VALIDES = ["DOMUS", "EQUUS", "NUBES", "ARBOR", "IGNIS", "TERRA", "VERUM", "ROSAE", "PUERI", "MAGNA", "BONUS", "NOVUS", "PATER", "MATER", "SOROR", "CAUSA"];
 
 // Sélection aléatoire d'un mot secret parmi le tableau MOTS_SECRETS (Losowy wybór tajnego słowa z tablicy MOTS_SECRETS)
 const motSecret = MOTS_SECRETS[Math.floor(Math.random() * MOTS_SECRETS.length)];
@@ -90,6 +121,25 @@ function afficherFenetreStats(stats) {
         ? Math.round((stats.partiesGagnees / stats.partiesJouees) * 100) 
         : 0;
 
+    // Sélection des éléments HTML pour les informations du mot (Wybór elementów HTML dla informacji o słowie)
+    const titreMotElement = document.getElementById("info-mot-titre");
+    const definitionElement = document.getElementById("text-definition");
+    const etymologieElement = document.getElementById("text-etymologie");
+
+    // Récupération des infos du mot secret depuis notre dictionnaire (Pobranie informacji o tajnym słowie z naszego słownika)
+    const infosMot = DICTIONNAIRE_INFOS[motSecret];
+
+    // Personnalisation du titre selon la victoire ou la défaite (Dostosowanie tytułu w zależności od wygranej lub przegranej)
+    if (victoire) {
+        titreMotElement.textContent = `Verbum : ${motSecret} (Victoire ! / Wygrana!)`;
+    } else {
+        titreMotElement.textContent = `Verbum : ${motSecret} (C'était le mot / To było słowo)`;
+    }
+
+    // Injection de la définition et de l'étymologie (Wstrzyknięcie definicji i etymologii)
+    definitionElement.textContent = infosMot.definition;
+    etymologieElement.textContent = infosMot.etymologie;
+
     // Injection des valeurs dans les éléments HTML (Wstrzyknięcie wartości do elementów HTML)
     document.getElementById("stat-jouees").textContent = stats.partiesJouees;
     document.getElementById("stat-victoires").textContent = pourcentageVictoires + "%";
@@ -100,7 +150,7 @@ function afficherFenetreStats(stats) {
     document.getElementById("stats-modal").classList.add("visible");
 }
 // -------------------------------------------------------------
-
+-- tu skończyłem
 // Attente que tout le document HTML soit chargé avant d'exécuter le code (Oczekiwanie na załadowanie całego dokumentu HTML przed uruchomieniem kodu)
 document.addEventListener("DOMContentLoaded", () => {
     // Appel de la fonction pour créer la grille visuelle (Wywołanie funkcji tworzącej wizualną siatku)
