@@ -111,7 +111,7 @@ function mettreAJourStatistiques(victoire) {
     sauvegarderStatistiques(stats);
     
     // Affichage des stats dans la modale HTML (Wyświetlenie statystyk w HTML modalu)
-    afficherFenetreStats(stats);
+    afficherFenetreStats(stats, victoire);
 }
 
 // Fonction pour afficher la modale avec les bonnes valeurs (Funkcja wyświetlająca modal z odpowiednimi wartościami)
@@ -149,8 +149,7 @@ function afficherFenetreStats(stats) {
     // Affichage de la modale en ajoutant la classe "visible" (Wyświetlenie modalu poprzez dodanie klasy "visible")
     document.getElementById("stats-modal").classList.add("visible");
 }
-// -------------------------------------------------------------
--- tu skończyłem
+// oo oo
 // Attente que tout le document HTML soit chargé avant d'exécuter le code (Oczekiwanie na załadowanie całego dokumentu HTML przed uruchomieniem kodu)
 document.addEventListener("DOMContentLoaded", () => {
     // Appel de la fonction pour créer la grille visuelle (Wywołanie funkcji tworzącej wizualną siatku)
@@ -401,12 +400,12 @@ function validerEssai() {
         // Si le joueur a trouvé le mot exact (Jeśli gracz odgadł dokładne słowo)
         if (motPropose === motSecret) {
             jeuFini = true; // Fin du jeu (Koniec gry)
-            alert("Félicitations ! Vous avez gagné ! (Gratulacje! Wygrałeś!)");
+            mettreAJourStatistiques(true);
         } 
         // Si le joueur a épuisé tous ses essais sans trouver (Jeśli gracz wyczerpał wszystkie próby bez odgadnięcia)
         else if (essaiActuel === ESSAIS_MAX - 1) {
             jeuFini = true; // Fin du jeu (Koniec gry)
-            alert(`Défaite ! Le mot était : ${motSecret} (Porażka! Słowem było: ${motSecret})`);
+            mettreAJourStatistiques(false);
         } 
         // Sinon, on passe à la ligne suivante (W przeciwnym razie przechodzimy do następnego wiersza)
         else {
