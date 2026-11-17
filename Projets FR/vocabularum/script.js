@@ -59,6 +59,23 @@ let grilleMots = Array(ESSAIS_MAX).fill("").map(() => Array(LONGUEUR_MOT).fill("
 // Variable booléenne pour bloquer le jeu une fois qu'il est gagné ou perdu (Zmienna logiczna do zablokowania gry po jej wygraniu lub przegraniu)
 let jeuFini = false;
 
+// FONCTION POUR AFFICHER UN TOAST ANIMÉ
+// Fonction qui cree dynamiquement une notification visuelle au lieu d'un alert() (Funckja dynamicznie tworząca wizualne powiadomienie zamiast alert())
+function afficherToast(message) {
+    // Récupération du conteneur des toasts dans le HTML (Pobranie kontenera toastów z HTML)
+    const conteneurToast = document.getElementById("toast-container");
+    
+    // Création d'un nouvel élément div pour le toast (Utworzenie nowego elementu div dla toasta)
+    const toastElement = document.createElement("div");
+    // Attribution de la classe CSS "toast" (Przypisanie klasy CSS "toast")
+    toastElement.className = "toast";
+    // Insertion du texte du message à l'intérieur du toast (Wstawienie tekstu wiadomości do wewnątrz toasta)
+    toastElement.textContent = message;
+    --- tu skończyłem
+}
+
+
+
 // --- GESTION DES STATISTIQUES VIA LOCALSTORAGE (ZARZĄDZANIE STATYSTYKAMI ZA POMOCĄ LOCALSTORAGE) ---
 // Fonction pour récupérer les statistiques enregistrées dans le navigateur (Funkcja pobierająca statystyki zapisane w przeglądarce)
 function chargerStatistiques() {
@@ -115,7 +132,7 @@ function mettreAJourStatistiques(victoire) {
 }
 
 // Fonction pour afficher la modale avec les bonnes valeurs (Funkcja wyświetlająca modal z odpowiednimi wartościami)
-function afficherFenetreStats(stats) {
+function afficherFenetreStats(stats, victoire) {
     // Calcul du pourcentage de victoires (Obliczenie procentu wygranych)
     const pourcentageVictoires = stats.partiesJouees > 0 
         ? Math.round((stats.partiesGagnees / stats.partiesJouees) * 100) 
