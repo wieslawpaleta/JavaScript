@@ -71,9 +71,15 @@ function afficherToast(message) {
     toastElement.className = "toast";
     // Insertion du texte du message à l'intérieur du toast (Wstawienie tekstu wiadomości do wewnątrz toasta)
     toastElement.textContent = message;
-    --- tu skończyłem
-}
 
+    // Ajout du toast dans son conteneur (Dodanie toasta do jego kontenera)
+    conteneurToast.appendChild(toastElement);
+
+    // Suppression automatique du toast apres 2000 millisecondes / 2 secondes (Automatyczne usunęcie toasta po 2000 milisekundach / 2 sekundach)
+    setTimeout(() => {
+        toastElement.remove();
+    }, 2000);
+}
 
 
 // --- GESTION DES STATISTIQUES VIA LOCALSTORAGE (ZARZĄDZANIE STATYSTYKAMI ZA POMOCĄ LOCALSTORAGE) ---
@@ -346,7 +352,7 @@ function effacerLettre() {
 function validerEssai() {
     // Vérification si le mot contient bien 5 lettres (Sprawdzenie, czy słowo ma dokładnie 5 liter)
     if (lettreActuelle !== LONGUEUR_MOT) {
-        alert("Le mot doit faire 5 lettres ! (Słowo musi mieć 5 liter!)");
+        afficherToast("Le mot doit faire 5 lettres ! (Słowo musi mieć 5 liter!)"); // Remplacement de l'alerte par notre fonction toast (Zastąpienie alertu naszą funkcją toast)
         return; // Arrêt de la fonction si incomplet (Przerwanie funkcji, jeśli jest niekompletne)
     }
 
@@ -356,7 +362,7 @@ function validerEssai() {
     // --- NOUVEAUTÉ DU POINT 1 : VÉRIFICATION DU DICTIONNAIRE ---
     // Vérification si le mot proposé existe dans la liste des mots valides (Sprawdzanie, czy proponowane słowo istnieje na liście poprawnych słów)
     if (!MOTS_VALIDES.includes(motPropose)) {
-        alert("Ce mot n'est pas dans le dictionnaire latin ! (To słowo nie znajduje się w słowniku łacińskim!)");
+        afficherToast("Ce mot n'est pas dans le dictionnaire latin ! (To słowo nie znajduje się w słowniku łacińskim!)"); // Remplacement de l'alerte par notre fonction toast (Zastąpienie alertu naszą funkcją toast)
         return; // Stoppe la validation si le mot n'est pas valide (Zatrzymuje walidację, jeśli słowo nie jest poprawne)
     }
     // -----------------------------------------------------------

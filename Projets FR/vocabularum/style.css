@@ -19,6 +19,50 @@ p {
     margin-top: 0;
 }
 
+
+/* Styles pour les toasts animes - Style dla animowanych toastów */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 2000;
+}
+
+.toast {
+    background-color: #ffffff;
+    color: #121213;
+    padding: 12px 20 px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeInOut 2s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
 /* Grille de jeu (Siatka gry) */
 .grid {
     display: grid;
