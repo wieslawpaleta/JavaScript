@@ -1,3 +1,66 @@
+// GESTION DES SONS AVEC WEB AUDIO API (Zarządzanie dźwiękiem za pomocą Web Audio API)
+// Création d'un contexte audio global pour générer des sons sans fichiers externes (Utworzenie globalnego kontekstu audio do generowania dźwięków bez zewnętrznych plików)
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// Fonction générique pour jouer un son synthétique (Uniwersalna funkcja do odtwarzania dźwięku syntetycznego)
+function jouerSon(frequence, typeOnde, duree) {
+    // Vérification si le contexte audio est suspendu (par sécurité du navigateur) (Sprawdzenie, czy kontekst audio jest w stanie wstrzymania (ze względów bezpieczeństwa przeglądarki))
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+
+    // Création d'un oscillateur pour générer la fréquence sonore (Utworzenie oscylatora do generowania częstotliwości dźwięku)
+    const oscillateur = audioCtx.createOscillator();
+    // Création d'un nœud de gain pour contrôler le volume (Utworzenie węzła wzmocnienia do kontrolowania głośności)
+    const gainNode = audioCtx.createGain();
+
+    // Définition du type d'onde sonore (ex: 'sine' pour doux, 'square' pour rétro) (Definiowanie typu fali dźwiękowej (np. 'sine' dla miękkiego, 'square' dla retro))
+    oscillateur.type = typeOnde;
+    // Définition de la fréquence en Hertz (hauteur de la note) (Definiowanie częstotliwości w hercach (wysokość nuty))
+    oscillateur.frequency.setValueAtTime(frequence, audioCtx.currentTime);
+
+    // Configuration de la baisse progressive du volume pour éviter les grésillements (Konfiguracja stopniowego spadku głośności, aby uniknąć trzasków)
+    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duree);
+
+    // Connexion de l'oscillateur au contrôle de volume, puis aux haut-parleurs (Podłączenie oscylatora do kontroli głośności, a następnie do głośników)
+    oscillateur.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    // Démarrage du son (Uruchomienie dźwięku)
+    oscillateur.start();
+    // Arrêt automatique du son après la durée spécifiée (Automatyczne zatrzymanie dźwięku po określonym czasie)
+    oscillateur.stop(audioCtx.currentTime + duree);
+}
+
+// Fonctions specifiques pour chaque type d'effet sonore (Specyficzne funckje dla każdego typu efektu dźwiękowego)
+function sonTaper() {
+    jouerSon(440, 'sine', 0.08); // Note La (A4), courte et douce (Nuta A4, krótka i łagodna)  
+}
+
+function sonEffacer() {
+    jouerSon(220, 'sine', 0.08); // Note plus grave (Niższa nuta)
+}
+
+function sonVictoire() {
+    jouerSon(150, 'sawtooth', 0.15); // Bourdonnemeny grave (Niskie buczenie)
+}
+
+function sonVictoire() {
+    // Séquence de notes joyeuses (Sekwencja radosnych nut)
+    setTimeout(() => jouerSon(523.25, 'sine', 0.1), 0);   // Do (C5)
+    setTimeout(() => jouerSon(659.25, 'sine', 0.1), 100); // Mi (E5)
+    setTimeout(() => jouerSon(783.99, 'sine', 0.2), 200); // Sol (G5)
+}
+
+function sonDefaite() {
+    // Séquence de notes tristes / descendantes (Sekwencja smutnych / opadających nut)
+    setTimeout(() => jouerSon(300, 'triangle', 0.15), 0);
+    setTimeout(() => jouerSon(250, 'triangle', 0.15), 150);
+    setTimeout(() => jouerSon(200, 'triangle', 0.3), 300);
+}
+
+
 // CORRECTION : DICTIONNAIRE AVEC UNIQUEMENT DES MOTS DE 5 LETTRES ---
 // Objet contenant les définitions et l'étymologie pour chaque mot secret de 5 lettres (Obiekt zawierający definicje i etymologię dla każdego tajnego słowa o długości 5 liter)
 const DICTIONNAIRE_INFOS = {
