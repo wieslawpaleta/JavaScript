@@ -1,4 +1,4 @@
-// GESTION DES SONS AVEC WEB AUDIO API (Zarządzanie dźwiękiem za pomocą Web Audio API)
+// --- NOUVEAUTÉ : GESTION DES SONS AVEC WEB AUDIO API ---
 // Création d'un contexte audio global pour générer des sons sans fichiers externes (Utworzenie globalnego kontekstu audio do generowania dźwięków bez zewnętrznych plików)
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -33,17 +33,17 @@ function jouerSon(frequence, typeOnde, duree) {
     oscillateur.stop(audioCtx.currentTime + duree);
 }
 
-// Fonctions specifiques pour chaque type d'effet sonore (Specyficzne funckje dla każdego typu efektu dźwiękowego)
+// Fonctions spécifiques pour chaque type d'effet sonore (Specyficzne funkcje dla każdego typu efektu dźwiękowego)
 function sonTaper() {
-    jouerSon(440, 'sine', 0.08); // Note La (A4), courte et douce (Nuta A4, krótka i łagodna)  
+    jouerSon(440, 'sine', 0.08); // Note La (A4), courte et douce (Nuta A4, krótka i łagodna)
 }
 
 function sonEffacer() {
     jouerSon(220, 'sine', 0.08); // Note plus grave (Niższa nuta)
 }
 
-function sonVictoire() {
-    jouerSon(150, 'sawtooth', 0.15); // Bourdonnemeny grave (Niskie buczenie)
+function sonErreur() {
+    jouerSon(150, 'sawtooth', 0.15); // Bourdonnement grave (Niskie buczenie)
 }
 
 function sonVictoire() {
@@ -59,10 +59,9 @@ function sonDefaite() {
     setTimeout(() => jouerSon(250, 'triangle', 0.15), 150);
     setTimeout(() => jouerSon(200, 'triangle', 0.3), 300);
 }
+// --------------------------------------------------------
 
-
-// CORRECTION : DICTIONNAIRE AVEC UNIQUEMENT DES MOTS DE 5 LETTRES ---
-// Objet contenant les définitions et l'étymologie pour chaque mot secret de 5 lettres (Obiekt zawierający definicje i etymologię dla każdego tajnego słowa o długości 5 liter)
+// Dictionnaire des définitions et étymologies (Słownik definicji i etymologii)
 const DICTIONNAIRE_INFOS = {
     "DOMUS": {
         definition: "Maison, foyer, demeure familiale. (Dom, ognisko domowe, siedziba rodzinna.)",
@@ -93,15 +92,14 @@ const DICTIONNAIRE_INFOS = {
         etymologie: "Issu d'une racine indo-européenne signifiant 'confiance' ou 'fidélité'. (Pochodzi z indoeuropejskiego rdzenia oznaczającego 'zaufanie' lub 'lojalność'.)"
     }
 };
-// ---------------------------------------------------------------------
 
-// Tableau des mots secrets (tous font strictement 5 lettres) (Tablica tajnych słów (wszystkie mają dokładnie 5 liter))
+// Tableau des mots secrets (Tablica tajnych słów)
 const MOTS_SECRETS = ["DOMUS", "EQUUS", "NUBES", "ARBOR", "IGNIS", "TERRA", "VERUM"];
 
-// Tableau élargi des mots valides (tous font strictement 5 lettres) (Rozszerzona tablica poprawnych słów (wszystkie mają dokładnie 5 liter))
+// Tableau élargi des mots valides (Rozszerzona tablica poprawnych słów)
 const MOTS_VALIDES = ["DOMUS", "EQUUS", "NUBES", "ARBOR", "IGNIS", "TERRA", "VERUM", "ROSAE", "PUERI", "MAGNA", "BONUS", "NOVUS", "PATER", "MATER", "SOROR", "CAUSA"];
 
-// Sélection aléatoire d'un mot secret parmi le tableau MOTS_SECRETS (Losowy wybór tajnego słowa z tablicy MOTS_SECRETS)
+// Sélection aléatoire d'un mot secret (Losowy wybór tajnego słowa)
 const motSecret = MOTS_SECRETS[Math.floor(Math.random() * MOTS_SECRETS.length)];
 
 // Définition du nombre maximum d'essais autorisés (Definiowanie maksymalnej dozwolonej liczby prób)
@@ -110,48 +108,34 @@ const ESSAIS_MAX = 6;
 // Définition de la longueur obligatoire de chaque mot (Definiowanie obowiązkowej długości każdego słowa)
 const LONGUEUR_MOT = 5;
 
-// Variable pour suivre la ligne (l'essai) actuelle du joueur, commence à 0 (Zmienna śledząca aktualny wiersz (próbę) gracza, zaczyna się od 0)
+// Variable pour suivre la ligne actuelle (Zmienna śledząca aktualny wiersz)
 let essaiActuel = 0;
 
-// Variable pour suivre la colonne (la lettre) actuelle dans la ligne, commence à 0 (Zmienna śledząca aktualną kolumnę (literę) w wierszu, zaczyna się od 0)
+// Variable pour suivre la lettre actuelle (Zmienna śledząca aktualną literę)
 let lettreActuelle = 0;
 
-// Création d'une grille vide sous forme de matrice 2D (6 lignes, 5 colonnes) (Tworzenie pustej siatki w formie macierzy 2D (6 wierszy, 5 kolumn))
+// Création d'une grille vide sous forme de matrice 2D (Tworzenie pustej siatki w formie macierzy 2D)
 let grilleMots = Array(ESSAIS_MAX).fill("").map(() => Array(LONGUEUR_MOT).fill(""));
 
-// Variable booléenne pour bloquer le jeu une fois qu'il est gagné ou perdu (Zmienna logiczna do zablokowania gry po jej wygraniu lub przegraniu)
+// Variable booléenne pour bloquer le jeu (Zmienna logiczna do zablokowania gry)
 let jeuFini = false;
 
-// FONCTION POUR AFFICHER UN TOAST ANIMÉ
-// Fonction qui cree dynamiquement une notification visuelle au lieu d'un alert() (Funckja dynamicznie tworząca wizualne powiadomienie zamiast alert())
+// Fonction pour afficher un toast animé (Funkcja wyświetlająca animowany toast)
 function afficherToast(message) {
-    // Récupération du conteneur des toasts dans le HTML (Pobranie kontenera toastów z HTML)
     const conteneurToast = document.getElementById("toast-container");
-    
-    // Création d'un nouvel élément div pour le toast (Utworzenie nowego elementu div dla toasta)
     const toastElement = document.createElement("div");
-    // Attribution de la classe CSS "toast" (Przypisanie klasy CSS "toast")
     toastElement.className = "toast";
-    // Insertion du texte du message à l'intérieur du toast (Wstawienie tekstu wiadomości do wewnątrz toasta)
     toastElement.textContent = message;
-
-    // Ajout du toast dans son conteneur (Dodanie toasta do jego kontenera)
     conteneurToast.appendChild(toastElement);
-
-    // Suppression automatique du toast apres 2000 millisecondes / 2 secondes (Automatyczne usunęcie toasta po 2000 milisekundach / 2 sekundach)
+    
     setTimeout(() => {
         toastElement.remove();
     }, 2000);
 }
 
-
-// --- GESTION DES STATISTIQUES VIA LOCALSTORAGE (ZARZĄDZANIE STATYSTYKAMI ZA POMOCĄ LOCALSTORAGE) ---
-// Fonction pour récupérer les statistiques enregistrées dans le navigateur (Funkcja pobierająca statystyki zapisane w przeglądarce)
+// Fonction pour récupérer les statistiques (Funkcja pobierająca statystyki)
 function chargerStatistiques() {
-    // Récupération de la chaîne JSON depuis le localStorage (Pobranie ciągu JSON z localStorage)
     const statsEnregistrees = localStorage.getItem("wordle_latin_stats");
-    
-    // Si des statistiques existent déjà, on les convertit en objet JS, sinon on retourne des valeurs par défaut (Jeśli statystyki już istnieją, konwertujemy je na obiekt JS, w przeciwnym razie zwracamy domyślne wartości)
     if (statsEnregistrees) {
         return JSON.parse(statsEnregistrees);
     } else {
@@ -164,309 +148,215 @@ function chargerStatistiques() {
     }
 }
 
-// Fonction pour sauvegarder les statistiques dans le navigateur (Funkcja do zapisywania statystyk w przeglądarce)
+// Fonction pour sauvegarder les statistiques (Funkcja do zapisywania statystyk)
 function sauvegarderStatistiques(stats) {
-    // Conversion de l'objet en chaîne JSON et stockage dans le localStorage (Konwersja obiektu na ciąg JSON i zapisanie w localStorage)
     localStorage.setItem("wordle_latin_stats", JSON.stringify(stats));
 }
 
-// Fonction pour mettre à jour les statistiques à la fin d'une partie (Funkcja aktualizująca statystyki na koniec gry)
+// Fonction pour mettre à jour les statistiques (Funkcja aktualizująca statystyki)
 function mettreAJourStatistiques(victoire) {
-    // Chargement des stats actuelles (Ładowanie aktualnych statystyk)
     let stats = chargerStatistiques();
-    
-    // Incrémentation du nombre de parties jouées (Inkrementacja liczby rozegranych gier)
     stats.partiesJouees++;
 
     if (victoire) {
-        // Incrémentation du nombre de victoires (Inkrementacja liczby wygranych)
         stats.partiesGagnees++;
-        // Augmentation de la série actuelle (Zwiększenie aktualnej serii)
         stats.serieActuelle++;
-        
-        // Si la série actuelle dépasse la meilleure, on met à jour la meilleure série (Jeśli aktualna seria przekracza najlepszą, aktualizujemy najlepszą serię)
         if (stats.serieActuelle > stats.meilleureSerie) {
             stats.meilleureSerie = stats.serieActuelle;
         }
     } else {
-        // Remise à zéro de la série actuelle en cas de défaite (Reset aktualnej serii w przypadku porażki)
         stats.serieActuelle = 0;
     }
 
-    // Sauvegarde des nouvelles stats (Zapisanie nowych statystyk)
     sauvegarderStatistiques(stats);
-    
-    // Affichage des stats dans la modale HTML (Wyświetlenie statystyk w HTML modalu)
     afficherFenetreStats(stats, victoire);
 }
 
-// Fonction pour afficher la modale avec les bonnes valeurs (Funkcja wyświetlająca modal z odpowiednimi wartościami)
+// Fonction pour afficher la modale de fin de partie (Funkcja wyświetlająca modal końca gry)
 function afficherFenetreStats(stats, victoire) {
-    // Calcul du pourcentage de victoires (Obliczenie procentu wygranych)
     const pourcentageVictoires = stats.partiesJouees > 0 
         ? Math.round((stats.partiesGagnees / stats.partiesJouees) * 100) 
         : 0;
 
-    // Sélection des éléments HTML pour les informations du mot (Wybór elementów HTML dla informacji o słowie)
     const titreMotElement = document.getElementById("info-mot-titre");
     const definitionElement = document.getElementById("text-definition");
     const etymologieElement = document.getElementById("text-etymologie");
 
-    // Récupération des infos du mot secret depuis notre dictionnaire (Pobranie informacji o tajnym słowie z naszego słownika)
     const infosMot = DICTIONNAIRE_INFOS[motSecret];
 
-    // Personnalisation du titre selon la victoire ou la défaite (Dostosowanie tytułu w zależności od wygranej lub przegranej)
     if (victoire) {
         titreMotElement.textContent = `Verbum : ${motSecret} (Victoire ! / Wygrana!)`;
     } else {
         titreMotElement.textContent = `Verbum : ${motSecret} (C'était le mot / To było słowo)`;
     }
 
-    // Injection de la définition et de l'étymologie (Wstrzyknięcie definicji i etymologii)
     definitionElement.textContent = infosMot.definition;
     etymologieElement.textContent = infosMot.etymologie;
 
-    // Injection des valeurs dans les éléments HTML (Wstrzyknięcie wartości do elementów HTML)
     document.getElementById("stat-jouees").textContent = stats.partiesJouees;
     document.getElementById("stat-victoires").textContent = pourcentageVictoires + "%";
     document.getElementById("stat-serie").textContent = stats.serieActuelle;
     document.getElementById("stat-max-serie").textContent = stats.meilleureSerie;
 
-    // Affichage de la modale en ajoutant la classe "visible" (Wyświetlenie modalu poprzez dodanie klasy "visible")
     document.getElementById("stats-modal").classList.add("visible");
 }
-// oo oo
-// Attente que tout le document HTML soit chargé avant d'exécuter le code (Oczekiwanie na załadowanie całego dokumentu HTML przed uruchomieniem kodu)
+
+// Initialisation au chargement de la page (Inicjalizacja podczas ładowania strony)
 document.addEventListener("DOMContentLoaded", () => {
-    // Appel de la fonction pour créer la grille visuelle (Wywołanie funkcji tworzącej wizualną siatku)
     creerGrille();
-    // Appel de la fonction pour créer le clavier virtuel (Wywołanie funkcji tworzącej wirtualną klawiaturę)
     creerClavier();
-    // Appel de la fonction pour écouter le clavier de l'ordinateur (Wywołanie funkcji nasłuchującej klawiaturę komputera)
     ecouterClavierPhysique();
 
-    // Écouteur de clic sur le bouton "Rejouer" pour recharger la page (Nasłuchiwanie kliknięcia przycisku "Zagraj ponownie", aby odświeżyć stronę)
     document.getElementById("btn-rejouer").addEventListener("click", () => {
         location.reload();
     });
 });
 
-// Fonction qui génère les cases de la grille dans le HTML (Funkcja generująca kafelki siatki w HTML)
+// Création de la grille (Tworzenie siatki)
 function creerGrille() {
-    // Récupération de l'élément conteneur de la grille depuis le HTML (Pobranie elementu kontenera siatki z HTML)
     const grilleConteneur = document.getElementById("game-grid");
-    
-    // Boucle pour créer les 6 lignes (Pętla tworząca 6 wierszy)
     for (let r = 0; r < ESSAIS_MAX; r++) {
-        // Création d'un élément div pour la ligne (Utworzenie elementu div dla wiersza)
         const ligne = document.createElement("div");
-        // Attribution de la classe CSS "row" à la ligne (Przypisanie klasy CSS "row" do wiersza)
         ligne.className = "row";
-        
-        // Boucle interne pour créer les 5 colonnes (lettres) par ligne (Wewnętrzna pętla tworząca 5 kolumn (liter) w wierszu)
         for (let c = 0; c < LONGUEUR_MOT; c++) {
-            // Création d'un élément div pour une case individuelle (Utworzenie elementu div dla pojedynczego kafelka)
             const caseLettre = document.createElement("div");
-            // Attribution de la classe CSS "tile" à la case (Przypisanie klasy CSS "tile" do kafelka)
             caseLettre.className = "tile";
-            // Stockage du numéro de ligne dans un attribut de données (Przechowywanie numeru wiersza w atrybucie danych)
             caseLettre.dataset.row = r;
-            // Stockage du numéro de colonne dans un attribut de données (Przechowywanie numeru kolumny w atrybucie danych)
             caseLettre.dataset.col = c;
-            // Ajout de la case à l'intérieur de la ligne (Dodanie kafelka do wewnątrz wiersza)
             ligne.appendChild(caseLettre);
         }
-        
-        // Ajout de la ligne complète à l'intérieur du conteneur principal de la grille (Dodanie kompletnego wiersza do głównego kontenera siatki)
         grilleConteneur.appendChild(ligne);
     }
 }
 
-// Fonction qui génère le clavier virtuel à l'écran (Funkcja generująca wirtualną klawiaturę na ekranie)
+// Création du clavier virtuel (Tworzenie wirtualnej klawiatury)
 function creerClavier() {
-    // Récupération du conteneur du clavier depuis le HTML (Pobranie kontenera klawiatury z HTML)
     const conteneurClavier = document.getElementById("keyboard");
-    
-    // Tableau contenant la structure des touches du clavier (Tablica zawierająca strukturę klawiszy klawiatury)
     const dispositionClavier = [
         ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
         ["L", "M", "N", "O", "P", "Q", "R", "S", "T"],
         ["ENTER", "U", "V", "X", "Z", "BACKSPACE"]
     ];
 
-    // Boucle pour parcourir chaque rangée du clavier (Pętla przechodząca przez każdy rząd klawiatury)
     dispositionClavier.forEach(ligneMots => {
-        // Création d'un div pour la rangée du clavier (Utworzenie div dla rzędu klawiatury)
         const ligneElement = document.createElement("div");
-        // Attribution de la classe CSS pour la rangée (Przypisanie klasy CSS dla rzędu)
         ligneElement.className = "keyboard-row";
 
-        // Boucle pour parcourir chaque touche de la rangée (Pętla przechodząca przez każdy klawisz w rzędzie)
         ligneMots.forEach(cle => {
-            // Création d'un élément bouton pour la touche (Utworzenie elementu przycisku dla klawisza)
             const boutonCle = document.createElement("button");
-            // Si la touche est BACKSPACE, afficher une icône, sinon afficher la lettre (Jeśli klawiszem jest BACKSPACE, wyświetl ikonę, w przeciwnym razie wyświetl literę)
             boutonCle.textContent = cle === "BACKSPACE" ? "⌫" : cle;
-            // Attribution de la classe CSS de base pour une touche (Przypisanie podstawowej klasy CSS dla klawisza)
             boutonCle.className = "key";
-            // Ajout d'un attribut personnalisé pour identifier la touche facilement (Dodanie niestandardowego atrybutu do łatwej identyfikacji klawisza)
             boutonCle.dataset.key = cle;
-            
-            // Si la touche est ENTER ou BACKSPACE, ajouter une classe pour l'agrandir (Jeśli klawiszem jest ENTER lub BACKSPACE, dodaj klasę powiększającą)
             if (cle === "ENTER" || cle === "BACKSPACE") {
                 boutonCle.classList.add("large");
             }
             
-            // Ajout d'un écouteur de clic sur le bouton de la touche (Dodanie nasłuchiwania kliknięcia na przycisk klawisza)
             boutonCle.addEventListener("click", () => traiterTouche(cle));
-            // Ajout du bouton dans la rangée du clavier (Dodanie przycisku do rzędu klawiatury)
             ligneElement.appendChild(boutonCle);
         });
 
-        // Ajout de la rangée complète dans le conteneur du clavier (Dodanie kompletnego rzędu do kontenera klawiatury)
         conteneurClavier.appendChild(ligneElement);
     });
 }
 
-// Fonction pour écouter les pressions de touches sur le clavier physique (Funkcja nasłuchująca naciśnięć klawiszy na fizycznej klawiaturze)
+// Écouteur du clavier physique (Nasłuchiwanie fizycznej klawiatury)
 function ecouterClavierPhysique() {
-    // Écoute de l'événement "keydown" sur toute la page (Nasłuchiwanie zdarzenia "keydown" na całej stronie)
     document.addEventListener("keydown", (e) => {
-        // Si la partie est finie, on ignore les touches (Jeśli gra jest skończona, ignorujemy klawisze)
         if (jeuFini) return;
         
-        // Conversion de la touche pressée en majuscule (Konwersja naciśniętego klawisza na wielką literę)
         const touche = e.key.toUpperCase();
-        
-        // Si l'utilisateur appuie sur Entrée (Jeśli użytkownik naciska Enter)
         if (touche === "ENTER") {
             traiterTouche("ENTER");
-        } 
-        // Si l'utilisateur appuie sur Retour arrière (Jeśli użytkownik naciska Backspace)
-        else if (touche === "BACKSPACE") {
+        } else if (touche === "BACKSPACE") {
             traiterTouche("BACKSPACE");
-        } 
-        // Si la touche est une lettre valide de A à Z (Jeśli klawiszem jest poprawna litera od A do Z)
-        else if (/^[A-Z]$/.test(touche)) {
+        } else if (/^[A-Z]$/.test(touche)) {
             traiterTouche(touche);
         }
     });
 }
 
-// Fonction centrale qui gère l'action à effectuer selon la touche clouée ou pressée (Centralna funkcja zarządzająca akcją do wykonania w zależności od klikniętego lub naciśniętego klawisza)
+// Gestion des touches (Obsługa klawiszy)
 function traiterTouche(touche) {
-    // Si la partie est finie, on arrête l'exécution (Jeśli gra jest skończona, przerywamy wykonywanie)
     if (jeuFini) return;
 
-    // Si la touche est ENTER, on valide la proposition (Jeśli klawiszem jest ENTER, zatwierdzamy propozycję)
     if (touche === "ENTER") {
         validerEssai();
-    } 
-    // Si la touche est BACKSPACE, on efface une lettre (Jeśli klawiszem jest BACKSPACE, usuwamy literę)
-    else if (touche === "BACKSPACE") {
+    } else if (touche === "BACKSPACE") {
         effacerLettre();
-    } 
-    // Si on n'a pas encore atteint la fin de la ligne et le nombre max d'essais (Jeśli nie osiągnęliśmy jeszcze końca wiersza ani maksymalnej liczby prób)
-    else if (lettreActuelle < LONGUEUR_MOT && essaiActuel < ESSAIS_MAX) {
+    } else if (lettreActuelle < LONGUEUR_MOT && essaiActuel < ESSAIS_MAX) {
         ajouterLettre(touche);
     }
 }
 
-// Fonction pour ajouter une lettre dans la grille (Funkcja do dodawania litery do siatki)
+// Ajout d'une lettre (Dodanie litery)
 function ajouterLettre(lettre) {
-    // Enregistrement de la lettre dans notre matrice de données (Zapisanie litery w naszej macierzy danych)
     grilleMots[essaiActuel][lettreActuelle] = lettre;
-    
-    // Sélection de la case HTML correspondante à la ligne et colonne actuelles (Wybór kafelka HTML odpowiadającego aktualnemu wierszowi i kolumnie)
     const caseElement = document.querySelector(`[data-row='${essaiActuel}'][data-col='${lettreActuelle}']`);
-    
-    // Affichage de la lettre dans le HTML du kafelek (Wyświetlenie litery w HTML kafelka)
     caseElement.textContent = lettre;
-    
-    // Ajout de la classe CSS pour l'animation de rebond (Dodanie klasy CSS dla animacji odbicia)
     caseElement.classList.add("pop");
-    
-    // Suppression de la classe d'animation une fois qu'elle est terminée (Usunięcie klasy animacji po jej zakończeniu)
     caseElement.addEventListener("animationend", () => caseElement.classList.remove("pop"), { once: true });
-
-    // Passage à la case suivante sur la droite (Przejście do następnego kafelka po prawej stronie)
+    
+    // --- NOUVEAUTÉ : Jouer le son de frappe ---
+    // --- NOWOŚĆ: Odtworzenie dźwięku wpisywania ---
+    sonTaper();
+    
     lettreActuelle++;
 }
 
-// Fonction pour effacer la dernière lettre saisie (Funkcja do usuwania ostatnio wpisanej litery)
+// Effacer une lettre (Usunięcie litery)
 function effacerLettre() {
-    // Vérification qu'il y a au moins une lettre à effacer dans la ligne (Sprawdzenie, czy w wierszu jest co najmniej jedna litera do usunięcia)
     if (lettreActuelle > 0) {
-        // Recul d'une position (Cofnięcie o jedną pozycję)
         lettreActuelle--;
-        
-        // Effacement de la lettre dans la matrice de données (Wyczyszczenie litery w macierzy danych)
         grilleMots[essaiActuel][lettreActuelle] = "";
-        
-        // Sélection de la case HTML correspondante (Wybór odpowiedniego kafelka HTML)
         const caseElement = document.querySelector(`[data-row='${essaiActuel}'][data-col='${lettreActuelle}']`);
-        
-        // Vidage du texte dans le HTML (Wyczyszczenie tekstu w HTML)
         caseElement.textContent = "";
+        
+        // --- NOUVEAUTÉ : Jouer le son d'effacement ---
+        // --- NOWOŚĆ: Odtworzenie dźwięku usuwania ---
+        sonEffacer();
     }
 }
 
-// Fonction principale qui valide l'essai complet du joueur (Główna funkcja zatwierdzająca pełną próbę gracza)
+// Validation de l'essai (Walidacja próby)
 function validerEssai() {
-    // Vérification si le mot contient bien 5 lettres (Sprawdzenie, czy słowo ma dokładnie 5 liter)
     if (lettreActuelle !== LONGUEUR_MOT) {
-        afficherToast("Le mot doit faire 5 lettres ! (Słowo musi mieć 5 liter!)"); // Remplacement de l'alerte par notre fonction toast (Zastąpienie alertu naszą funkcją toast)
-        return; // Arrêt de la fonction si incomplet (Przerwanie funkcji, jeśli jest niekompletne)
+        // Jouer le son d'erreur (Odtworzenie dźwięku błędu)
+        sonErreur();
+        afficherToast("Le mot doit faire 5 lettres ! (Słowo musi mieć 5 liter!)");
+        return;
     }
 
-    // Assemblage des lettres de la ligne actuelle pour former un mot complet (Złożenie liter aktualnego wiersza w celu utworzenia pełnego słowa)
     const motPropose = grilleMots[essaiActuel].join("");
 
-    // --- NOUVEAUTÉ DU POINT 1 : VÉRIFICATION DU DICTIONNAIRE ---
-    // Vérification si le mot proposé existe dans la liste des mots valides (Sprawdzanie, czy proponowane słowo istnieje na liście poprawnych słów)
+    // Vérification du dictionnaire (Sprawdzenie słownika)
     if (!MOTS_VALIDES.includes(motPropose)) {
-        afficherToast("Ce mot n'est pas dans le dictionnaire latin ! (To słowo nie znajduje się w słowniku łacińskim!)"); // Remplacement de l'alerte par notre fonction toast (Zastąpienie alertu naszą funkcją toast)
-        return; // Stoppe la validation si le mot n'est pas valide (Zatrzymuje walidację, jeśli słowo nie jest poprawne)
+        // Jouer le son d'erreur (Odtworzenie dźwięku błędu)
+        sonErreur();
+        afficherToast("Ce mot n'est pas dans le dictionnaire ! (To słowo nie jest w słowniku!)");
+        return;
     }
-    // -----------------------------------------------------------
 
-    // Boucle pour parcourir chaque lettre du mot proposé et animer le retournement (Pętla przechodząca przez każdą literę proponowanego słowa i animująca obrót)
+    // Boucle d'animation de chaque lettre (Pętla animująca każdą literę)
     for (let i = 0; i < LONGUEUR_MOT; i++) {
-        // Sélection de la case actuelle (Wybór aktualnego kafelka)
         const caseElement = document.querySelector(`[data-row='${essaiActuel}'][data-col='${i}']`);
-        
-        // Récupération de la lettre à cette position (Pobranie litery z tej pozycji)
         const lettreProposee = motPropose[i];
-        
-        // Sélection du bouton correspondant sur le clavier virtuel (Wybór odpowiadającego przycisku na wirtualnej klawiaturze)
         const boutonClavier = document.querySelector(`[data-key='${lettreProposee}']`);
 
-        // Utilisation d'un délai pour créer un effet visuel séquentiel lettre par lettre (Użycie opóźnienia w celu stworzenia sekwencyjnego efektu wizualnego litera po literze)
         setTimeout(() => {
-            // Ajout de la classe d'animation de retournement 3D (Dodanie klasy animacji obrotu 3D)
             caseElement.classList.add("flip");
 
-            // Au milieu de l'animation (250 millisecondes), on change la couleur (W połowie animacji (250 milisekund) zmieniamy kolor)
             setTimeout(() => {
                 let statutLettre = "";
-                
-                // Si la lettre est exactement au bon endroit (Jeśli litera jest dokładnie na właściwym miejscu)
                 if (lettreProposee === motSecret[i]) {
                     statutLettre = "correct";
-                } 
-                // Si la lettre est présente dans le mot mais mal placée (Jeśli litera jest obecna w słowie, ale na złym miejscu)
-                else if (motSecret.includes(lettreProposee)) {
+                } else if (motSecret.includes(lettreProposee)) {
                     statutLettre = "present";
-                } 
-                // Sinon, la lettre n'est pas du tout dans le mot (W przeciwnym razie litera w ogóle nie występuje w słowie)
-                else {
+                } else {
                     statutLettre = "absent";
                 }
 
-                // Application de la classe de couleur sur la case (Zastosowanie klasy koloru na kafelku)
                 caseElement.classList.add(statutLettre);
                 
-                // Mise à jour de la couleur de la touche sur le clavier virtuel (Aktualizacja koloru klawisza na wirtualnej klawiaturze)
                 if (boutonClavier) {
                     if (statutLettre === "correct") {
                         boutonClavier.className = "key correct";
@@ -476,27 +366,26 @@ function validerEssai() {
                         boutonClavier.className = "key absent";
                     }
                 }
-            }, 250); // Fin du premier sous-délai (Koniec pierwszego pod-opóźnienia)
+            }, 250);
 
-        }, i * 300); // Décalage de 300ms pour chaque lettre suivante (Opóźnienie 300ms dla każdej kolejnej litery)
+        }, i * 300);
     }
 
-    // Gestion de la fin de tour ou de partie après que toutes les animations soient finies (Obsługa końca tury lub gry po zakończeniu wszystkich animacji)
+    // Fin de partie (Koniec gry)
     setTimeout(() => {
-        // Si le joueur a trouvé le mot exact (Jeśli gracz odgadł dokładne słowo)
         if (motPropose === motSecret) {
-            jeuFini = true; // Fin du jeu (Koniec gry)
+            jeuFini = true;
+            // Jouer le son de victoire (Odtworzenie dźwięku wygranej)
+            sonVictoire();
             mettreAJourStatistiques(true);
-        } 
-        // Si le joueur a épuisé tous ses essais sans trouver (Jeśli gracz wyczerpał wszystkie próby bez odgadnięcia)
-        else if (essaiActuel === ESSAIS_MAX - 1) {
-            jeuFini = true; // Fin du jeu (Koniec gry)
+        } else if (essaiActuel === ESSAIS_MAX - 1) {
+            jeuFini = true;
+            // Jouer le son de défaite (Odtworzenie dźwięku przegranej)
+            sonDefaite();
             mettreAJourStatistiques(false);
-        } 
-        // Sinon, on passe à la ligne suivante (W przeciwnym razie przechodzimy do następnego wiersza)
-        else {
-            essaiActuel++; // Incrémentation du numéro de la ligne (Inkrementacja numeru wiersza)
-            lettreActuelle = 0; // Remise à zéro de l'index de la lettre (Reset indeksu litery na początek)
+        } else {
+            essaiActuel++;
+            lettreActuelle = 0;
         }
-    }, LONGUEUR_MOT * 300 + 100); // Temps total calculé pour attendre la fin des animations (Całkowity obliczony czas oczekiwania na koniec animacji)
+    }, LONGUEUR_MOT * 300 + 100);
 }
