@@ -1,9 +1,17 @@
-// --- NOUVEAUTÉ : GESTION DES SONS AVEC WEB AUDIO API ---
+// ÉTAT DU SON (ACTIF OU COUPÉ)
+// Variable booléenne : false = son activé, true = son coupé (Zmienna logiczna: false = dźwięk włączony, true = dźwięk wyciszony)
+let sonCoupe = false;
+
+
+// GESTION DES SONS AVEC WEB AUDIO API 
 // Création d'un contexte audio global pour générer des sons sans fichiers externes (Utworzenie globalnego kontekstu audio do generowania dźwięków bez zewnętrznych plików)
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 // Fonction générique pour jouer un son synthétique (Uniwersalna funkcja do odtwarzania dźwięku syntetycznego)
 function jouerSon(frequence, typeOnde, duree) {
+    // Si le son est coupé, on arrête immédiatement la fonction (Jeśli dźwięk jest wyciszony, natychmiast przerywamy funkcję)
+    if (sonCoupe) return;
+
     // Vérification si le contexte audio est suspendu (par sécurité du navigateur) (Sprawdzenie, czy kontekst audio jest w stanie wstrzymania (ze względów bezpieczeństwa przeglądarki))
     if (audioCtx.state === 'suspended') {
         audioCtx.resume();
@@ -59,6 +67,8 @@ function sonDefaite() {
     setTimeout(() => jouerSon(250, 'triangle', 0.15), 150);
     setTimeout(() => jouerSon(200, 'triangle', 0.3), 300);
 }
+
+// Fonction pour 
 // --------------------------------------------------------
 
 // Dictionnaire des définitions et étymologies (Słownik definicji i etymologii)

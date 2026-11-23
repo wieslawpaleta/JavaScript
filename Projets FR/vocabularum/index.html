@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id="toast-container" class="toast-container"></div>"
+    <!-- Conteneur pour les notifications toast (Kontener na powiadomienia typu toast) -->
+    <div id="toast-container" class="toast-container"></div>
 
     <header>
+        <!-- --- NOUVEAUTÉ : Bouton pour couper ou activer le son --- -->
+        <!-- --- NOWOŚĆ: Przycisk do wyciszania lub włączania dźwięku --- -->
+        <button id="btn-son" class="btn-sound" aria-label="Couper ou activer le son (Wycisz lub włącz dźwięk)">🔊</button>
+        <!-- -------------------------------------------------------- -->
+
         <!-- Titre principal (Tytuł główny) -->
         <h1>WORDLE CLASSICUM</h1>
         <p>Devinez le mot latin de 5 lettres (Odgadnij 5-literowe łacińskie słowo)</p>
@@ -24,19 +29,16 @@
         <div id="keyboard" class="keyboard"></div>
     </main>
 
-    <!-- Fenêtre modale des statistiques (Wyskakujące okno ze statystykami) -->
+    <!-- Fenêtre modale des statistiques et définitions (Wyskakujące okno ze statystykami i definicjami) -->
     <div id="stats-modal" class="modal">
         <div class="modal-content">
             <h2>Statistiques (Statystyki)</h2>
-
-            <!-- Bloc d'affichage du mot et de sa definition -->
-            <!-- Blok wyświetlania słowa i jego definicji -->
+            
             <div id="word-info" class="word-info-box">
                 <h3 id="info-mot-titre"></h3>
                 <p id="info-definition"><strong>Définition (Definicja) :</strong> <span id="text-definition"></span></p>
                 <p id="info-etymologie"><strong>Étymologie (Etymologia) :</strong> <span id="text-etymologie"></span></p>
             </div>
-            <!-- ----------------------------------------------------------- -->
 
             <div class="stats-container">
                 <div class="stat-box">

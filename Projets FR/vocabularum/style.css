@@ -9,6 +9,31 @@ body {
     padding: 20px;
 }
 
+header {
+    position: relative; /* Permet de placer le bouton son par rapport à l'en-tête (Pozwala ustawić przycisk dźwięku względem nagłówka) */
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.btn-sound {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #272729;
+    color: #ffffff;
+    border: 1px solid #3a3a3c;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-sound:hover {
+    background-color: #3a3a3c;
+}
+
 h1 {
     letter-spacing: 2px;
     margin-bottom: 5px;
