@@ -1,7 +1,12 @@
+// GESTION DU THEME SOMBRE / CLAIR
+// Fonction pour appliquer le thème (clair ou sombre) et mettre à jour l'icône du bouton (Funkcja stosująca motyw (jasny lub ciemny) i aktualizująca ikonę przycisku)
+function appliquerTheme(estClair) {
+    // Récupération du bouton de thème dans le HTML (Pobranie przycisku motywu z HTML)
+    const boutonTheme = document.getElementById("btn-theme");
+}
 // ÉTAT DU SON (ACTIF OU COUPÉ)
 // Variable booléenne : false = son activé, true = son coupé (Zmienna logiczna: false = dźwięk włączony, true = dźwięk wyciszony)
 let sonCoupe = false;
-
 
 // GESTION DES SONS AVEC WEB AUDIO API 
 // Création d'un contexte audio global pour générer des sons sans fichiers externes (Utworzenie globalnego kontekstu audio do generowania dźwięków bez zewnętrznych plików)
@@ -68,7 +73,25 @@ function sonDefaite() {
     setTimeout(() => jouerSon(200, 'triangle', 0.3), 300);
 }
 
-// Fonction pour 
+// Fonction pour basculer entre son activé et son coupé (Funkcja przełączająca między dźwiękiem włączonym a wyciszonym)
+function basculerSon() {
+    // Inversion de la valeur booléenne : true devient false, et false devient true (Odwrócenie wartości logicznej: true staje się false, a false staje się true)
+    sonCoupe = !sonCoupe;
+
+    // Récupération du bouton son dans le HTML (Pobranie przycisku dźwięku z HTML)
+    const boutonSon = document.getElementById("btn-son");
+
+    // Mise à jour de l'icône selon l'état du son (Aktualizacja ikony w zależności od stanu dźwięku)
+    if (sonCoupe) {
+        boutonSon.textContent = "🔇";
+        afficherToast("Son coupé (Dźwięk wyciszony)");
+    } else {
+        boutonSon.textContent = "🔊";
+        afficherToast("Son activé (Dźwięk włączony)");
+        // Petit son de confirmation quand on réactive le son (Krótki dźwięk potwierdzający ponowne włączenie dźwięku)
+        sonTaper();
+    }
+}
 // --------------------------------------------------------
 
 // Dictionnaire des définitions et étymologies (Słownik definicji i etymologii)
@@ -216,6 +239,10 @@ document.addEventListener("DOMContentLoaded", () => {
     creerGrille();
     creerClavier();
     ecouterClavierPhysique();
+
+    // Écouteur de clic sur le bouton son
+    // Nasłuchiwanie kliknięcia przycisku dźwięku
+    document.getElementById("btn-son").addEventListener("click", basculerSon);
 
     document.getElementById("btn-rejouer").addEventListener("click", () => {
         location.reload();

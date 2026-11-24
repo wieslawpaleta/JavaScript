@@ -1,3 +1,36 @@
+/* Variables CSS pour le mode sombre (par defaut) et le mode clair */
+/* Zmienne CSS dla trybu ciemnego (domyślnego) i trybu jasnego */
+:root {
+    --bg-color: #121213; 
+    --text-color: #ffffff;
+    --muted-text: #818384; 
+    --border-color: #3a3a3c;
+    --tile-pop-border: #565758;
+    --key-bg: #818384;
+    --surface-bg: #1a1a1b;
+    --card-bg: #272729;
+    --btn-icon-bg: #272729;
+    --btn-icon-hover: #3a3a3c;
+    --toast-bg: #ffffff;
+    --toast-text: #121213;
+    --absent-color: #3a3a3c;
+
+}
+
+body.light-theme {
+    --bg-color: #ffffff;
+    --text-color: #121213;
+    --muted-text: #6e7073;
+    --border-color: #d3d6da;
+    --tile-pop-border: #878a8c;
+    --key-bg: #d3d6da;
+    --key-text: #121213;
+    --surface-bg: #ffffff;
+    --card-bg: #f3f4f6;
+    --btn-icon-bg: #f3f3f6;
+    -- 
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #121213;
