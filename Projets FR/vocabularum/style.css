@@ -1,61 +1,87 @@
-/* Variables CSS pour le mode sombre (par defaut) et le mode clair */
-/* Zmienne CSS dla trybu ciemnego (domyślnego) i trybu jasnego */
+/* Variables CSS pour le mode sombre (par défaut) et le mode clair */
+/* NOWOŚĆ: Zmienne CSS dla trybu ciemnego (domyślnego) i trybu jasnego */
 :root {
-    --bg-color: #121213; 
-    --text-color: #ffffff;
-    --muted-text: #818384; 
-    --border-color: #3a3a3c;
-    --tile-pop-border: #565758;
-    --key-bg: #818384;
-    --surface-bg: #1a1a1b;
-    --card-bg: #272729;
-    --btn-icon-bg: #272729;
-    --btn-icon-hover: #3a3a3c;
-    --toast-bg: #ffffff;
-    --toast-text: #121213;
-    --absent-color: #3a3a3c;
-
+    --bg-color: #121213; /* Couleur de fond principale (Główny kolor tła) */
+    --text-color: #ffffff; /* Couleur du texte principal (Główny kolor tekstu) */
+    --muted-text: #818384; /* Couleur du texte secondaire (Drugorzędny kolor tekstu) */
+    --border-color: #3a3a3c; /* Couleur des bordures des cases (Kolor obramowań kafelków) */
+    --tile-pop-border: #565758; /* Bordure lors de la saisie (Obramowanie podczas wpisywania) */
+    --key-bg: #818384; /* Fond des touches neutres (Tło neutralnych klawiszy) */
+    --key-text: #ffffff; /* Texte des touches neutres (Tekst neutralnych klawiszy) */
+    --surface-bg: #1a1a1b; /* Fond de la fenêtre modale (Tło okna modalnego) */
+    --card-bg: #272729; /* Fond des cartes statistiques et infos (Tło kart statystyk i informacji) */
+    --btn-icon-bg: #272729; /* Fond des boutons d'icônes (Tło przycisków z ikonami) */
+    --btn-icon-hover: #3a3a3c; /* Survol des boutons d'icônes (Najazd myszą na przyciski z ikonami) */
+    --toast-bg: #ffffff; /* Fond des notifications toast (Tło powiadomień toast) */
+    --toast-text: #121213; /* Texte des notifications toast (Tekst powiadomień toast) */
+    --absent-color: #3a3a3c; /* Couleur lettre absente (Kolor nieobecnej litery) */
 }
 
 body.light-theme {
-    --bg-color: #ffffff;
-    --text-color: #121213;
-    --muted-text: #6e7073;
-    --border-color: #d3d6da;
-    --tile-pop-border: #878a8c;
-    --key-bg: #d3d6da;
-    --key-text: #121213;
-    --surface-bg: #ffffff;
-    --card-bg: #f3f4f6;
-    --btn-icon-bg: #f3f3f6;
-    -- 
+    --bg-color: #ffffff; /* Fond clair (Jasne tło) */
+    --text-color: #121213; /* Texte sombre (Ciemny tekst) */
+    --muted-text: #6e7073; /* Texte secondaire gris foncé (Ciemnoszary tekst drugorzędny) */
+    --border-color: #d3d6da; /* Bordure claire typique Wordle (Jasne obramowanie typowe dla Wordle) */
+    --tile-pop-border: #878a8c; /* Bordure au clic/frappe (Obramowanie przy wpisaniu) */
+    --key-bg: #d3d6da; /* Touches claires (Jasne klawisze) */
+    --key-text: #121213; /* Texte sombre sur touches claires (Ciemny tekst na jasnych klawiszach) */
+    --surface-bg: #ffffff; /* Fond modale clair (Jasne tło modalu) */
+    --card-bg: #f3f4f6; /* Fond cartes clair (Jasne tło kart) */
+    --btn-icon-bg: #f3f4f6; /* Fond bouton icône clair (Jasne tło przycisku ikony) */
+    --btn-icon-hover: #e5e7eb; /* Survol bouton icône clair (Najazd na jasny przycisk ikony) */
+    --toast-bg: #121213; /* Toast sombre contrasté (Kontrastowy ciemny toast) */
+    --toast-text: #ffffff; /* Texte clair sur toast sombre (Jasny tekst na ciemnym toście) */
+    --absent-color: #787c7e; /* Gris moyen pour lettre absente en mode clair (Średni szary dla nieobecnej litery w trybie jasnym) */
 }
+/* ------------------------------------------------------------------------------- */
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #121213;
-    color: #ffffff;
+    background-color: var(--bg-color); /* Utilisation de la variable de fond (Użycie zmiennej tła) */
+    color: var(--text-color); /* Utilisation de la variable de texte (Użycie zmiennej tekstu) */
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
     padding: 20px;
+    transition: background-color 0.25s ease, color 0.25s ease; /* Transition douce entre thèmes (Płynne przejście między motywami) */
 }
 
 header {
-    position: relative; /* Permet de placer le bouton son par rapport à l'en-tête (Pozwala ustawić przycisk dźwięku względem nagłówka) */
+    position: relative;
     text-align: center;
     width: 100%;
     max-width: 500px;
 }
 
+/* Style du bouton de changement de thème */
+/* Styl przycisku zmiany motywu */
+.btn-theme {
+    position: absolute;
+    top: 0;
+    left: 0; /* Placé à gauche de l'en-tête (Umieszczony po lewej stronie nagłówka) */
+    background-color: var(--btn-icon-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-theme:hover {
+    background-color: var(--btn-icon-hover);
+}
+/* --------------------------------------------------------- */
+
 .btn-sound {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #272729;
-    color: #ffffff;
-    border: 1px solid #3a3a3c;
+    background-color: var(--btn-icon-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 8px 12px;
     font-size: 1.1rem;
@@ -64,7 +90,7 @@ header {
 }
 
 .btn-sound:hover {
-    background-color: #3a3a3c;
+    background-color: var(--btn-icon-hover);
 }
 
 h1 {
@@ -73,12 +99,11 @@ h1 {
 }
 
 p {
-    color: #818384;
+    color: var(--muted-text);
     margin-top: 0;
 }
 
-
-/* Styles pour les toasts animes - Style dla animowanych toastów */
+/* Styles pour les toasts animés (Style dla animowanych toastów) */
 .toast-container {
     position: fixed;
     top: 20px;
@@ -92,9 +117,9 @@ p {
 }
 
 .toast {
-    background-color: #ffffff;
-    color: #121213;
-    padding: 12px 20 px;
+    background-color: var(--toast-bg);
+    color: var(--toast-text);
+    padding: 12px 20px;
     border-radius: 4px;
     font-weight: bold;
     font-size: 0.9rem;
@@ -138,19 +163,19 @@ p {
 .tile {
     width: 50px;
     height: 50px;
-    border: 2px solid #3a3a3c;
+    border: 2px solid var(--border-color);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
-    transition: border-color 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, background-color 0.25s ease;
 }
 
 .tile.pop {
     animation: pop 0.1s ease-in-out;
-    border-color: #565758;
+    border-color: var(--tile-pop-border);
 }
 
 @keyframes pop {
@@ -172,16 +197,19 @@ p {
 .tile.correct {
     background-color: #538d4e;
     border-color: #538d4e;
+    color: #ffffff;
 }
 
 .tile.present {
     background-color: #b59f3b;
     border-color: #b59f3b;
+    color: #ffffff;
 }
 
 .tile.absent {
-    background-color: #3a3a3c;
-    border-color: #3a3a3c;
+    background-color: var(--absent-color);
+    border-color: var(--absent-color);
+    color: #ffffff;
 }
 
 /* Clavier (Klawiatura) */
@@ -198,24 +226,35 @@ p {
 }
 
 .key {
-    background-color: #818384;
-    color: white;
+    background-color: var(--key-bg);
+    color: var(--key-text);
     border: none;
     padding: 12px 10px;
     border-radius: 4px;
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.25s ease;
 }
 
 .key.large {
     padding: 12px 16px;
 }
 
-.key.correct { background-color: #538d4e; }
-.key.present { background-color: #b59f3b; }
-.key.absent { background-color: #3a3a3c; }
+.key.correct {
+    background-color: #538d4e;
+    color: #ffffff;
+}
+
+.key.present {
+    background-color: #b59f3b;
+    color: #ffffff;
+}
+
+.key.absent {
+    background-color: var(--absent-color);
+    color: #ffffff;
+}
 
 /* Styles pour la fenêtre modale (Style dla okna modalnego) */
 .modal {
@@ -236,23 +275,22 @@ p {
 }
 
 .modal-content {
-    background-color: #1a1a1b;
+    background-color: var(--surface-bg);
     padding: 25px;
     border-radius: 8px;
     text-align: center;
-    border: 2px solid #3a3a3c;
+    border: 2px solid var(--border-color);
     width: 360px;
 }
 
 .modal-content h2 {
     margin-top: 0;
-    color: #ffffff;
+    color: var(--text-color);
     font-size: 1.4rem;
 }
 
-/* Styles pour le bloc d'informations étymologiques (Styl dla bloku informacji etymologicznych) */
 .word-info-box {
-    background-color: #272729;
+    background-color: var(--card-bg);
     padding: 12px;
     border-radius: 4px;
     margin-bottom: 15px;
@@ -269,13 +307,13 @@ p {
 
 .word-info-box p {
     font-size: 0.85rem;
-    color: #b0b3b8;
+    color: var(--muted-text);
     margin: 5px 0;
     line-height: 1.3;
 }
 
 .word-info-box strong {
-    color: #ffffff;
+    color: var(--text-color);
 }
 
 .stats-container {
@@ -286,7 +324,7 @@ p {
 }
 
 .stat-box {
-    background-color: #272729;
+    background-color: var(--card-bg);
     padding: 12px;
     border-radius: 4px;
     display: flex;
@@ -296,12 +334,12 @@ p {
 .stat-number {
     font-size: 1.6rem;
     font-weight: bold;
-    color: #ffffff;
+    color: var(--text-color);
 }
 
 .stat-label {
     font-size: 0.75rem;
-    color: #818384;
+    color: var(--muted-text);
     margin-top: 4px;
 }
 

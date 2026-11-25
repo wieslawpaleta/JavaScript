@@ -3,6 +3,14 @@
 function appliquerTheme(estClair) {
     // Récupération du bouton de thème dans le HTML (Pobranie przycisku motywu z HTML)
     const boutonTheme = document.getElementById("btn-theme");
+
+    // Si le mode clair est activé (Jeśli włączony jest tryb jasny)
+    if (estClair) {
+        // Ajout de la classe "light-them" sur <body>
+        document.body.classList.add("light-theme");
+        // Changement de l'icone en lune pour proposer de repasser en mode sombre
+        if (boutonTheme) boutonTheme.
+    }
 }
 // ÉTAT DU SON (ACTIF OU COUPÉ)
 // Variable booléenne : false = son activé, true = son coupé (Zmienna logiczna: false = dźwięk włączony, true = dźwięk wyciszony)
