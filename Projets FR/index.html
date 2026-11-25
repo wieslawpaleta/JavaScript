@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Classicum (Latin)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Conteneur pour les notifications toast (Kontener na powiadomienia typu toast) -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <header>
+        <!-- Bouton pour basculer entre mode sombre sombre et mode clair -->
+        <!-- Przycisk do przełączania między trybem ciemnym a jasnym -->
+        <button id="btn-theme" class="btn-theme" aria-label="Changer le thème clair ou sombre (Zmień motyw jasny lub ciemny)">☀️</button>
+
+        <!-- Bouton pour couper ou activer le son (Przycisk do wyciszania lub włączania dźwięku) -->
+        <button id="btn-son" class="btn-sound" aria-label="Couper ou activer le son (Wycisz lub włącz dźwięk)">🔊</button>
+        <!-- Titre principal (Tytuł główny) -->
+        <h1>WORDLE CLASSICUM</h1>
+        <p>Devinez le mot latin de 5 lettres (Odgadnij 5-literowe łacińskie słowo)</p>
+    </header>
+
+    <main>
+        <!-- Grille de jeu (Siatka gry) -->
+        <div id="game-grid" class="grid"></div>
+
+        <!-- Clavier virtuel (Wirtualna klawiatura) -->
+        <div id="keyboard" class="keyboard"></div>
+    </main>
+
+    <!-- Fenêtre modale des statistiques et définitions (Wyskakujące okno ze statystykami i definicjami) -->
+    <div id="stats-modal" class="modal">
+        <div class="modal-content">
+            <h2>Statistiques (Statystyki)</h2>
+            
+            <div id="word-info" class="word-info-box">
+                <h3 id="info-mot-titre"></h3>
+                <p id="info-definition"><strong>Définition (Definicja) :</strong> <span id="text-definition"></span></p>
+                <p id="info-etymologie"><strong>Étymologie (Etymologia) :</strong> <span id="text-etymologie"></span></p>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span id="stat-jouees" class="stat-number">0</span>
+                    <span class="stat-label">Jouées (Rozegrane)</span>
+                </div>
+                <div class="stat-box">
+                    <span id="stat-victoires" class="stat-number">0</span>
+                    <span class="stat-label">Victoires % (Wygrane %)</span>
+                </div>
+                <div class="stat-box">
+                    <span id="stat-serie" class="stat-number">0</span>
+                    <span class="stat-label">Série actuelle (Aktualna seria)</span>
+                </div>
+                <div class="stat-box">
+                    <span id="stat-max-serie" class="stat-number">0</span>
+                    <span class="stat-label">Meilleure série (Najlepsza seria)</span>
+                </div>
+            </div>
+            <button id="btn-rejouer" class="btn-restart">Rejouer (Zagraj ponownie)</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
