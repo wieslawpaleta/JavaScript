@@ -6,12 +6,47 @@ function appliquerTheme(estClair) {
 
     // Si le mode clair est activé (Jeśli włączony jest tryb jasny)
     if (estClair) {
-        // Ajout de la classe "light-them" sur <body>
+        // Ajout de la classe "light-theme" sur <body> (Dodanie klasy "light-theme" do <body>)
         document.body.classList.add("light-theme");
-        // Changement de l'icone en lune pour proposer de repasser en mode sombre
-        if (boutonTheme) boutonTheme.
+        // Changement de l'icône en lune pour proposer de repasser en mode sombre (Zmiana ikony na księżyc, aby zaproponować powrót do trybu ciemnego)
+        if (boutonTheme) boutonTheme.textContent = "🌙";
+    } else {
+        // Suppression de la classe "light-theme" pour revenir au mode sombre (Usunięcie klasy "light-theme", aby wrócić do trybu ciemnego)
+        document.body.classList.remove("light-theme");
+        // Changement de l'icône en soleil pour proposer de passer en mode clair (Zmiana ikony na słońce, aby zaproponować przejście do trybu jasnego)
+        if (boutonTheme) boutonTheme.textContent = "☀️";
     }
 }
+
+// Fonction pour basculer entre le thème sombre et le thème clair et sauvegarder le choix (Funkcja przełączająca między motywem ciemnym a jasnym i zapisująca wybór)
+function basculerTheme() {
+    // Vérification si le mode clair est actuellement actif (Sprawdzenie, czy tryb jasny jest aktualnie aktywny)
+    const estActuellementClair = document.body.classList.contains("light-theme");
+    // Inversion de l'état : true devient false, false devient true (Odwrócenie stanu: true staje się false, false staje się true)
+    const nouveauModeClair = !estActuellementClair;
+
+    // Application visuelle du nouveau thème (Wizualne zastosowanie nowego motywu)
+    appliquerTheme(nouveauModeClair);
+
+    // Sauvegarde de la préférence dans le localStorage du navigateur (Zapisanie preferencji w localStorage przeglądarki)
+    localStorage.setItem("wordle_latin_theme", nouveauModeClair ? "light" : "dark");
+
+    // Affichage d'une notification toast (Wyświetlenie powiadomienia toast)
+    if (nouveauModeClair) {
+        afficherToast("Mode clair activé (Włączono tryb jasny)");
+    } else {
+        afficherToast("Mode sombre activé (Włączono tryb ciemny)");
+    }
+}
+
+// Fonction pour charger le thème enregistré au démarrage de la page (Funkcja ładująca zapisany motyw podczas uruchamiania strony)
+function chargerTheme() {
+    // Lecture de la valeur enregistrée dans localStorage (Odczytanie wartości zapisanej w localStorage)
+    const themeEnregistre = localStorage.getItem("wordle_latin_theme");
+    // Application du mode clair uniquement si "light" est enregistré (Zastosowanie trybu jasnego tylko wtedy, gdy zapisane jest "light")
+    appliquerTheme(themeEnregistre === "light");
+}
+
 // ÉTAT DU SON (ACTIF OU COUPÉ)
 // Variable booléenne : false = son activé, true = son coupé (Zmienna logiczna: false = dźwięk włączony, true = dźwięk wyciszony)
 let sonCoupe = false;
@@ -244,12 +279,14 @@ function afficherFenetreStats(stats, victoire) {
 
 // Initialisation au chargement de la page (Inicjalizacja podczas ładowania strony)
 document.addEventListener("DOMContentLoaded", () => {
+    chargerTheme(); // Chargement du thème sauvegardé (Ładowanie zapisanego motywu) 
     creerGrille();
     creerClavier();
     ecouterClavierPhysique();
 
-    // Écouteur de clic sur le bouton son
-    // Nasłuchiwanie kliknięcia przycisku dźwięku
+
+    document.getElementById("btn-theme").addEventListener("click", basculerTheme);
+    
     document.getElementById("btn-son").addEventListener("click", basculerSon);
 
     document.getElementById("btn-rejouer").addEventListener("click", () => {
